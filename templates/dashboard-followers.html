@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from around.createx.studio/dashboard-followers.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:19:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Around | Dashboard - Followers</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <!-- Google Tag Manager-->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WKV3GT5');
+    </script>
+  </head>
+  <!-- Body-->
+  <body style="background-color:#f7f7fc;">
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Navbar (Floating light)-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-dark navbar-floating navbar-sticky" data-scroll-header data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index-2.html"><img class="navbar-floating-logo d-none d-lg-block" src="img/logo/logo-light.png" alt="Around" width="153"><img class="navbar-stuck-logo" src="img/logo/logo-dark.png" alt="Around" width="153"><img class="d-lg-none" src="img/logo/logo-icon.png" alt="Around" width="58"></a>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
+            <div class="navbar-tool dropdown"><a class="navbar-tool-icon-box" href="account-profile.html"><img class="navbar-tool-icon-box-img" src="img/dashboard/avatar/main-sm.jpg" alt="Avatar"></a><a class="navbar-tool-label dropdown-toggle" href="account-profile.html"><small>Hello,</small>Amanda</a>
+              <ul class="dropdown-menu dropdown-menu-end" style="width: 15rem;">
+                <li><a class="dropdown-item d-flex align-items-center" href="dashboard-orders.html"><i class="ai-shopping-bag fs-base opacity-60 me-2"></i>Orders<span class="nav-indicator"></span><span class="ms-auto fs-xs text-muted">2</span></a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item d-flex align-items-center" href="dashboard-sales.html"><i class="ai-dollar-sign fs-base opacity-60 me-2"></i>Sales<span class="ms-auto fs-xs text-muted">$735.00</span></a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item d-flex align-items-center" href="dashboard-messages.html"><i class="ai-message-square fs-base opacity-60 me-2"></i>Messages<span class="nav-indicator"></span><span class="ms-auto fs-xs text-muted">1</span></a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item d-flex align-items-center" href="dashboard-followers.html"><i class="ai-users fs-base opacity-60 me-2"></i>Followers<span class="ms-auto fs-xs text-muted">34</span></a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item d-flex align-items-center" href="dashboard-reviews.html"><i class="ai-star fs-base opacity-60 me-2"></i>Reviews<span class="ms-auto fs-xs text-muted">15</span></a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item d-flex align-items-center" href="dashboard-favorites.html"><i class="ai-heart fs-base opacity-60 me-2"></i>Favorites<span class="ms-auto fs-xs text-muted">6</span></a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item d-flex align-items-center" href="signin-illustration.html"><i class="ai-log-out fs-base opacity-60 me-2"></i>Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="offcanvas-cap navbar-shadow">
+              <h5 class="mt-1 mb-0">Menu</h5>
+              <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- Menu-->
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Demos</a>
+                  <div class="dropdown-menu"><a class="dropdown-column dropdown-column-img bg-secondary" href="index-2.html" style="background-image: url(img/demo/menu-banner.jpg);"></a>
+                    <div class="dropdown-column"><a class="dropdown-item" href="index-2.html">Web Template Presentation</a><a class="dropdown-item" href="demo-business-consulting.html">Business Consulting</a><a class="dropdown-item" href="demo-shop-homepage.html">Shop Homepage</a><a class="dropdown-item" href="demo-booking-directory.html">Booking / Directory</a><a class="dropdown-item" href="demo-creative-agency.html">Creative Agency</a><a class="dropdown-item" href="demo-web-studio.html">Web Studio</a><a class="dropdown-item" href="demo-product-software.html">Product Landing - Software</a></div>
+                    <div class="dropdown-column"><a class="dropdown-item" href="demo-product-gadget.html">Product Landing - Gadget</a><a class="dropdown-item" href="demo-mobile-app.html">Mobile App Showcase</a><a class="dropdown-item" href="demo-coworking-space.html">Coworking Space</a><a class="dropdown-item" href="demo-event-landing.html">Event Landing</a><a class="dropdown-item" href="demo-marketing-seo.html">Digital Marketing &amp; SEO</a><a class="dropdown-item" href="demo-food-blog.html">Food Blog</a><a class="dropdown-item" href="demo-personal-portfolio.html">Personal Portfolio</a></div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Templates</a>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-column mb-2 mb-lg-0">
+                      <h5 class="dropdown-header">Blog</h5><a class="dropdown-item" href="blog-grid-rs.html">Grid Right Sidebar</a><a class="dropdown-item" href="blog-grid-ls.html">Grid Left Sidebar</a><a class="dropdown-item" href="blog-grid-ns.html">Grid No Sidebar</a><a class="dropdown-item" href="blog-list-rs.html">List Right Sidebar</a><a class="dropdown-item" href="blog-list-ls.html">List Left Sidebar</a><a class="dropdown-item" href="blog-list-ns.html">List No Sidebar</a><a class="dropdown-item" href="blog-single-rs.html">Single Post Right Sidebar</a><a class="dropdown-item" href="blog-single-ls.html">Single Post Left Sidebar</a><a class="dropdown-item" href="blog-single-ns.html">Single Post No Sidebar</a>
+                    </div>
+                    <div class="dropdown-column mb-2 mb-lg-0">
+                      <h5 class="dropdown-header">Portfolio</h5><a class="dropdown-item" href="portfolio-style-1.html">Grid Style 1</a><a class="dropdown-item" href="portfolio-style-2.html">Grid Style 2</a><a class="dropdown-item" href="portfolio-style-3.html">Grid Style 3</a><a class="dropdown-item" href="portfolio-single-side-gallery-grid.html">Project Side Gallery (Grid)</a><a class="dropdown-item" href="portfolio-single-side-gallery-list.html">Project Side Gallery (List)</a><a class="dropdown-item" href="portfolio-single-carousel.html">Project Carousel</a><a class="dropdown-item" href="portfolio-single-wide-gallery.html">Project Wide Gallery</a>
+                    </div>
+                    <div class="dropdown-column mb-2 mb-lg-0">
+                      <h5 class="dropdown-header">Shop</h5><a class="dropdown-item" href="shop-ls.html">Grid Left Sidebar</a><a class="dropdown-item" href="shop-rs.html">Grid Right Sidebar</a><a class="dropdown-item" href="shop-ns.html">Grid No Sidebar</a><a class="dropdown-item" href="shop-single.html">Single Product</a><a class="dropdown-item" href="checkout.html">Cart &amp; Checkout</a><a class="dropdown-item" href="order-tracking.html">Order Tracking</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Account</a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Dashboard</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="dashboard-orders.html">Orders</a></li>
+                        <li><a class="dropdown-item" href="dashboard-sales.html">Sales</a></li>
+                        <li><a class="dropdown-item" href="dashboard-messages.html">Messages</a></li>
+                        <li><a class="dropdown-item" href="dashboard-followers.html">Followers</a></li>
+                        <li><a class="dropdown-item" href="dashboard-reviews.html">Reviews</a></li>
+                        <li><a class="dropdown-item" href="dashboard-favorites.html">Favorites</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Account Settings</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="account-profile.html">Profile Info</a></li>
+                        <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
+                        <li><a class="dropdown-item" href="account-notifications.html">Notifications</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item" href="signin-illustration.html">Sign In - Illustration</a></li>
+                    <li><a class="dropdown-item" href="signin-image.html">Sign In - Image</a></li>
+                    <li><a class="dropdown-item" href="signin-signup.html">Sign In - Sign Up</a></li>
+                    <li><a class="dropdown-item" href="password-recovery.html">Password Recovery</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="about.html">About</a></li>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Contacts</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="contacts-v1.html">Contacts v.1</a></li>
+                        <li><a class="dropdown-item" href="contacts-v2.html">Contacts v.2</a></li>
+                        <li><a class="dropdown-item" href="contacts-v3.html">Contacts v.3</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Help Center</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="help-topics.html">Help Topics</a></li>
+                        <li><a class="dropdown-item" href="help-single-topic.html">Single Topic</a></li>
+                        <li><a class="dropdown-item" href="help-submit-request.html">Submit a Request</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">404 Not Found</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="404-simple.html">Simple Text</a></li>
+                        <li><a class="dropdown-item" href="404-illustration.html">Illustration</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Coming Soon</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="coming-soon-image.html">Image</a></li>
+                        <li><a class="dropdown-item" href="coming-soon-illustration.html">Illustration</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Docs / UI Kit</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="docs/dev-setup.html">
+                        <div class="d-flex align-items-center">
+                          <div class="fs-xl text-muted"><i class="ai-file-text"></i></div>
+                          <div class="ps-3"><span class="d-block text-heading">Documentation</span><small class="d-block text-muted">Kick-start customization</small></div>
+                        </div></a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="components/typography.html">
+                        <div class="d-flex align-items-center">
+                          <div class="fs-xl text-muted"><i class="ai-layers"></i></div>
+                          <div class="ps-3"><span class="d-block text-heading">UI Kit<span class="badge bg-danger ms-2">50+</span></span><small class="d-block text-muted">Flexible components</small></div>
+                        </div></a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="docs/changelog.html">
+                        <div class="d-flex align-items-center">
+                          <div class="fs-xl text-muted"><i class="ai-edit"></i></div>
+                          <div class="ps-3"><span class="d-block text-heading">Changelog<span class="badge bg-success ms-2">v2.0.0</span></span><small class="d-block text-muted">Regular updates</small></div>
+                        </div></a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="mailto:support@createx.studio">
+                        <div class="d-flex align-items-center">
+                          <div class="fs-xl text-muted"><i class="ai-life-buoy"></i></div>
+                          <div class="ps-3"><span class="d-block text-heading">Support</span><small class="d-block text-muted">support@createx.studio</small></div>
+                        </div></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Page content-->
+      <!-- Slanted background-->
+      <div class="position-relative bg-gradient" style="height: 480px;">
+        <div class="shape shape-bottom shape-slant bg-secondary d-none d-lg-block">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 260">
+            <polygon fill="currentColor" points="0,257 0,260 3000,260 3000,0"></polygon>
+          </svg>
+        </div>
+      </div>
+      <!-- Page content-->
+      <div class="container position-relative zindex-5 pb-4 mb-md-3" style="margin-top: -350px;">
+        <div class="row">
+          <!-- Sidebar-->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="bg-light rounded-3 shadow-lg">
+              <div class="px-4 py-4 mb-1 text-center"><img class="d-block rounded-circle mx-auto my-2" src="img/dashboard/avatar/main.jpg" at="Amanda Wilson" width="110">
+                <h6 class="mb-0 pt-1">Amanda Wilson</h6><span class="text-muted fs-sm">@amanda_w</span>
+              </div>
+              <div class="d-lg-none px-4 pb-4 text-center"><a class="btn btn-primary px-5 mb-2" href="#account-menu" data-bs-toggle="collapse"><i class="ai-menu me-2"></i>Account menu</a></div>
+              <div class="d-lg-block collapse pb-2" id="account-menu">
+                <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">Dashboard</h3><a class="d-flex align-items-center nav-link-style px-4 py-3" href="dashboard-orders.html"><i class="ai-shopping-bag fs-lg opacity-60 me-2"></i>Orders<span class="nav-indicator"></span><span class="text-muted fs-sm fw-normal ms-auto">2</span></a><a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="dashboard-sales.html"><i class="ai-dollar-sign fs-lg opacity-60 me-2"></i>Sales<span class="text-muted fs-sm fw-normal ms-auto">$735.00</span></a><a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="dashboard-messages.html"><i class="ai-message-square fs-lg opacity-60 me-2"></i>Messages<span class="nav-indicator"></span><span class="text-muted fs-sm fw-normal ms-auto">1</span></a><a class="d-flex align-items-center nav-link-style px-4 py-3 border-top active" href="dashboard-followers.html"><i class="ai-users fs-lg opacity-60 me-2"></i>Followers<span class="text-muted fs-sm fw-normal ms-auto">34</span></a><a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="dashboard-reviews.html"><i class="ai-star fs-lg opacity-60 me-2"></i>Reviews<span class="text-muted fs-sm fw-normal ms-auto">15</span></a><a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="dashboard-favorites.html"><i class="ai-heart fs-lg opacity-60 me-2"></i>Favorites<span class="text-muted fs-sm fw-normal ms-auto">6</span></a>
+                <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">Account settings</h3><a class="d-flex align-items-center nav-link-style px-4 py-3" href="account-profile.html">Profile info</a><a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="account-payment.html">Payment methods</a>
+                <div class="d-flex align-items-center border-top"><a class="d-block w-100 nav-link-style px-4 py-3" href="account-notifications.html">Notifications</a>
+                  <div class="ms-auto px-3">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="notifications-switch" data-master-checkbox-for="#notification-settings" checked>
+                      <label class="form-check-label" for="notifications-switch"></label>
+                    </div>
+                  </div>
+                </div><a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="signin-illustration.html"><i class="ai-log-out fs-lg opacity-60 me-2"></i>Sign out</a>
+              </div>
+            </div>
+          </div>
+          <!-- Content-->
+          <div class="col-lg-8">
+            <div class="d-flex flex-column h-100 bg-light rounded-3 shadow-lg p-4">
+              <div class="py-2 p-md-3">
+                <!-- Title-->
+                <h1 class="h3 mb-3 text-nowrap text-center text-sm-start">Followers<span class="d-inline-block align-middle bg-faded-dark fs-ms fw-medium rounded-1 py-1 px-2 ms-2">34</span></h1>
+                <!-- Follower-->
+                <div class="d-md-flex align-items-center py-grid-gutter border-bottom">
+                  <div class="d-flex align-items-center me-md-4 mb-4 mb-md-0" style="max-width: 264px;"><a class="d-block" href="#"><img class="d-block rounded-circle" src="img/dashboard/followers/01.jpg" alt="Emili Parker" width="90"></a>
+                    <div class="ps-3">
+                      <h2 class="fs-base nav-heading mb-1"><a href="#">Emili Parker</a></h2>
+                      <div class="fs-xs text-muted mb-2 pb-1">@emiliParker, United States</div>
+                      <button class="btn btn-translucent-primary btn-sm" type="button">Follow</button>
+                    </div>
+                  </div>
+                  <div class="d-flex ms-auto ps-md-1"><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/architecture/01.jpg" alt="Architecture" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/architecture/02.jpg" alt="Architecture" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/architecture/03.jpg" alt="Architecture" width="102"></a><a class="d-block" href="#"><img class="d-block" src="img/dashboard/followers/architecture/04.jpg" alt="Architecture" width="102"></a></div>
+                </div>
+                <!-- Follower-->
+                <div class="d-md-flex align-items-center py-grid-gutter border-bottom">
+                  <div class="d-flex align-items-center me-md-4 mb-4 mb-md-0" style="max-width: 264px;"><a class="d-block" href="#"><img class="d-block rounded-circle" src="img/dashboard/followers/02.jpg" alt="Tim Brooks" width="90"></a>
+                    <div class="ps-3">
+                      <h2 class="fs-base nav-heading mb-1"><a href="#">Tim Brooks</a></h2>
+                      <div class="fs-xs text-muted mb-2 pb-1">@timmy, Australia</div>
+                      <button class="btn btn-translucent-primary btn-sm" type="button">Follow</button>
+                    </div>
+                  </div>
+                  <div class="d-flex ms-auto ps-md-1"><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/nature/01.jpg" alt="Nature" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/nature/02.jpg" alt="Nature" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/nature/03.jpg" alt="Nature" width="102"></a><a class="d-block" href="#"><img class="d-block" src="img/dashboard/followers/nature/04.jpg" alt="Nature" width="102"></a></div>
+                </div>
+                <!-- Follower-->
+                <div class="d-md-flex align-items-center py-grid-gutter border-bottom">
+                  <div class="d-flex align-items-center me-md-4 mb-4 mb-md-0" style="max-width: 264px;"><a class="d-block" href="#"><img class="d-block rounded-circle" src="img/dashboard/followers/03.jpg" alt="Abstract Shapes" width="90"></a>
+                    <div class="ps-3">
+                      <h2 class="fs-base nav-heading mb-1"><a href="#">Abstract Shapes</a></h2>
+                      <div class="fs-xs text-muted mb-2 pb-1">@abs_shapes, Poland</div>
+                      <button class="btn btn-secondary btn-sm" type="button">Unfollow</button>
+                    </div>
+                  </div>
+                  <div class="d-flex ms-auto ps-md-1"><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/abstract/01.jpg" alt="Abstract" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/abstract/02.jpg" alt="Abstract" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/abstract/03.jpg" alt="Abstract" width="102"></a><a class="d-block" href="#"><img class="d-block" src="img/dashboard/followers/abstract/04.jpg" alt="Abstract" width="102"></a></div>
+                </div>
+                <!-- Follower-->
+                <div class="d-md-flex align-items-center py-grid-gutter border-bottom">
+                  <div class="d-flex align-items-center me-md-4 mb-4 mb-md-0" style="max-width: 264px;"><a class="d-block" href="#"><img class="d-block rounded-circle" src="img/dashboard/followers/04.jpg" alt="Fernando Gonzalez" width="90"></a>
+                    <div class="ps-3">
+                      <h2 class="fs-base nav-heading mb-1"><a href="#">Fernando Gonzalez</a></h2>
+                      <div class="fs-xs text-muted mb-2 pb-1">@f_gonzalez, Spain</div>
+                      <button class="btn btn-translucent-primary btn-sm" type="button">Follow</button>
+                    </div>
+                  </div>
+                  <div class="d-flex ms-auto ps-md-1"><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/animals/01.jpg" alt="Animals" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/animals/02.jpg" alt="Animals" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/animals/03.jpg" alt="Animals" width="102"></a><a class="d-block" href="#"><img class="d-block" src="img/dashboard/followers/animals/04.jpg" alt="Animals" width="102"></a></div>
+                </div>
+                <!-- Follower-->
+                <div class="d-md-flex align-items-center py-grid-gutter border-bottom">
+                  <div class="d-flex align-items-center me-md-4 mb-4 mb-md-0" style="max-width: 264px;"><a class="d-block" href="#"><img class="d-block rounded-circle" src="img/dashboard/followers/05.jpg" alt="City Shots I" width="90"></a>
+                    <div class="ps-3">
+                      <h2 class="fs-base nav-heading mb-1"><a href="#">City Shots Inc.</a></h2>
+                      <div class="fs-xs text-muted mb-2 pb-1">@city_shots, France</div>
+                      <button class="btn btn-translucent-primary btn-sm" type="button">Follow</button>
+                    </div>
+                  </div>
+                  <div class="d-flex ms-auto ps-md-1"><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/cities/01.jpg" alt="Cities" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/cities/02.jpg" alt="Cities" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/cities/03.jpg" alt="Cities" width="102"></a><a class="d-block" href="#"><img class="d-block" src="img/dashboard/followers/cities/04.jpg" alt="Cities" width="102"></a></div>
+                </div>
+                <!-- Follower-->
+                <div class="d-md-flex align-items-center py-grid-gutter border-bottom">
+                  <div class="d-flex align-items-center me-md-4 mb-4 mb-md-0" style="max-width: 264px;"><a class="d-block" href="#"><img class="d-block rounded-circle" src="img/dashboard/followers/06.jpg" alt="Barbara Miller" width="90"></a>
+                    <div class="ps-3">
+                      <h2 class="fs-base nav-heading mb-1"><a href="#">Barbara Miller</a></h2>
+                      <div class="fs-xs text-muted mb-2 pb-1">@barbyM, United Kingdom</div>
+                      <button class="btn btn-secondary btn-sm" type="button">Unfollow</button>
+                    </div>
+                  </div>
+                  <div class="d-flex ms-auto ps-md-1"><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/cars/01.jpg" alt="Cars" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/cars/02.jpg" alt="Cars" width="102"></a><a class="d-block" href="#" style="margin-right: 10px;"><img class="d-block" src="img/dashboard/followers/cars/03.jpg" alt="Cars" width="102"></a><a class="d-block" href="#"><img class="d-block" src="img/dashboard/followers/cars/04.jpg" alt="Cars" width="102"></a></div>
+                </div>
+                <!-- Pagination-->
+                <nav class="d-md-flex justify-content-between align-items-center text-center text-md-start pt-grid-gutter">
+                  <div class="d-md-flex align-items-center w-100"><span class="fs-sm text-muted me-md-3">Showing 6 of 34 followers</span>
+                    <div class="progress w-100 my-3 mx-auto mx-md-0" style="max-width: 10rem; height: 4px;">
+                      <div class="progress-bar" role="progressbar" style="width: 18%;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm" type="button">Show more followers</button>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer-->
+    <footer class="footer py-4">
+      <div class="container d-md-flex align-items-center justify-content-between py-2 text-center text-md-end">
+        <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
+          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Support</a></li>
+          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Contacts</a></li>
+          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Terms &amp; Conditions</a></li>
+        </ul>
+        <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">© All rights reserved. Made by</span><a class="nav-link-style fw-normal" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
+      </div>
+    </footer>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+  </body>
+
+<!-- Mirrored from around.createx.studio/dashboard-followers.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:19:41 GMT -->
+</html>

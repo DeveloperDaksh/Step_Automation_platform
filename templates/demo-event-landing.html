@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from around.createx.studio/demo-event-landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:15:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Around | Event Landing</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/account/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/account/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/account/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+    <link rel="mask-icon" color="#5bbad5" href="{% static 'safari-pinned-tab.svg' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'js/auth.js' %}"></script>
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/simplebar/dist/simplebar.min.css' %}"/>
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/tiny-slider/dist/tiny-slider.css' %}"/>
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/lightgallery.js/dist/css/lightgallery.min.css' %}"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="{% static 'css/theme.min.css' %}">
+    <!-- Google Tag Manager-->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WKV3GT5');
+    </script>
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Sign In Modal-->
+      <div class="modal fade" id="modal-signin" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content border-0">
+            <div class="view show" id="modal-signin-view">
+              <div class="modal-header border-0 bg-dark px-4">
+                <h4 class="modal-title text-light">Sign in</h4>
+                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="btn-close "></button>
+              </div>
+              <div class="modal-body px-4">
+                <p class="fs-ms text-muted">Sign in to your account using email and password provided during registration.</p>
+                <p id="login-msg"></p>
+                <form class="needs-validation" novalidate action="signin" method="post">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="input-group"><i class="ai-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                      <input class="form-control rounded" type="text" placeholder="Email or Username" name="email" id="emaill" autocomplete="false" required>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="input-group"><i class="ai-lock position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                      <div class="password-toggle w-100">
+                        <input class="form-control" type="password" placeholder="Password" name="password" id="passwordl" required>
+                        <label class="password-toggle-btn" aria-label="Show/hide password">
+                          <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3 mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="keepme" id="keep-signed" name="keepsignin">
+                      <label class="form-check-label fs-sm" for="keep-signed">Keep me signed in</label>
+                    </div><a class="nav-link-style fs-ms" href="password-recovery.html">Forgot password?</a>
+                  </div>
+                  <button class="btn btn-primary d-block w-100" type="submit" id="submitl">Sign in</button>
+                  <p class="fs-sm pt-3 mb-0">Don't have an account? <a href='#' class='fw-medium' data-view='#modal-signup-view'>Sign up</a></p>
+                </form>
+              </div>
+            </div>
+            <div class="view" id="modal-signup-view">
+              <div class="modal-header border-0 bg-dark px-4">
+                <h4 class="modal-title text-light">Sign up</h4>
+                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="btn-close"></button>
+              </div>
+              <div class="modal-body px-4">
+                <p class="fs-ms text-muted">Registration takes less than a minute but gives you full control over your orders.</p>
+                  <p id="register-message"></p>
+                <form class="needs-validation" novalidate method="post">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Fist Name" name="first_name" id="first_name" required>
+                  </div>
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Last name" name="last_name" id="last_name" required>
+                  </div>
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Email" name="email" id="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Username" name="username" id="username" required>
+                  </div>
+                  <div class="mb-3 password-toggle">
+                    <input class="form-control" type="password" placeholder="Password" name="password" id="password" required>
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                    </label>
+                  </div>
+                  <div class="mb-3 password-toggle">
+                    <input class="form-control" type="password" placeholder="Confirm password" name="cpassword" id="cpassword" required>
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                    </label>
+                  </div>
+                  <button class="btn btn-primary d-block w-100" type="submit" id="submitb">Sign up</button>
+                  <p class="fs-sm pt-3 mb-0">Already have an account? <a href='#' class='fw-medium' data-view='#modal-signin-view'>Sign in</a></p>
+                </form>
+              </div>
+            </div>
+            <div class="modal-body text-center px-4 pt-2 pb-4">
+              <hr class="my-0">
+              <p class="fs-sm fw-medium text-heading pt-4">Or sign in with</p><a class="btn-social bs-facebook bs-lg mx-1 mb-2" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-twitter bs-lg mx-1 mb-2" href="#"><i class="ai-twitter"></i></a><a class="btn-social bs-instagram bs-lg mx-1 mb-2" href="#"><i class="ai-instagram"></i></a><a class="btn-social bs-google bs-lg mx-1 mb-2" href="#"><i class="ai-google"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar (Solid background)-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-light bg-light navbar-sticky" data-scroll-header data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index-2.html">StepSaasAutomation</a>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto"><a class="nav-link-style fs-sm text-nowrap" href="#modal-signin" data-bs-toggle="modal" data-view="#modal-signin-view"><i class="ai-user fs-xl me-2 align-middle"></i>Sign in</a><a class="btn btn-primary ms-grid-gutter d-none d-lg-inline-block" href="#modal-signin" data-bs-toggle="modal" data-view="#modal-signup-view">Sign up</a></div>
+          <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="offcanvas-cap navbar-shadow">
+              <h5 class="mt-1 mb-0">Menu</h5>
+              <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- Menu-->
+              <ul class="navbar-nav">
+                    <li class="nav-item dropdown dropdown-mega active">
+                        <a class="nav-link dropdown-toggle" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-mega">
+                        <a class="nav-link dropdown-toggle" href="/about">About Us</a>
+                    </li>
+                      <li class="nav-item dropdown dropdown-mega">
+                        <a class="nav-link dropdown-toggle" href="/contacts-v3">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Page content-->
+      <!-- Hero-->
+      <section class="bg-size-cover overflow-hidden pt-5 pt-md-6 pt-lg-7" style="max-height: 750px; background-image: url({% static 'img/demo/event-landing/hero-bg.jpg' %});">
+        <div class="container position-relative zindex-5 pt-2 pb-4 pb-md-2">
+          <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-7 col-md-8 text-center">
+              <h1 class="display-4 text-light mb-4">Instagram Marketing Conference 2020</h1>
+              <div class="d-inline-flex align-items-center mx-1 px-3 mb-4"><i class="ai-calendar h2 mb-0 me-2 text-light"></i><span class="text-light">September 11-13, 2020</span></div>
+              <div class="d-inline-flex align-items-center mx-1 px-3 mb-4"><i class="ai-map-pin h2 mb-0 me-2 text-light"></i><span class="text-light">Hotel Oranfe, Los Angeles</span></div>
+              <div class="pt-2"><a class="btn btn-success" href="#tickets" data-scroll>Buy Tickets</a></div>
+            </div>
+          </div>
+        </div>
+        <div data-jarallax-element="50" data-disable-parallax-down="md"><img class="d-block mx-auto" src="{% static 'img/demo/event-landing/people.png' %}" alt="People"></div>
+      </section>
+      <!-- Countdown-->
+      <section class="bg-secondary py-5 py-md-6">
+        <div class="container py-2 py-md-0">
+          <div class="row align-items-center">
+            <div class="col-xl-4 text-center text-xl-start">
+              <h2 class="mb-4 mb-xl-0">Conference will start in:</h2>
+            </div>
+            <div class="col-xl-8">
+              <div class="countdown h2 display-2 justify-content-center justify-content-xl-start" data-countdown="10/01/2021 07:00:00 PM">
+                <div class="countdown-days mb-0 mt-3 me-0 px-4 border-end"><span class="countdown-value fw-normal px-4">0</span><span class="countdown-label fs-lg text-body">Days</span></div>
+                <div class="countdown-hours mb-0 mt-3 me-0 px-4 border-end"><span class="countdown-value fw-normal px-4">0</span><span class="countdown-label fs-lg text-body">Hours</span></div>
+                <div class="countdown-minutes mb-0 mt-3 me-0 px-4 border-end"><span class="countdown-value fw-normal px-4">0</span><span class="countdown-label fs-lg text-body">Mins</span></div>
+                <div class="countdown-seconds mb-0 mt-3 me-0 px-4"><span class="countdown-value fw-normal px-4">0</span><span class="countdown-label fs-lg text-body">Secs</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Speakers-->
+      <section class="container pt-5 pb-4 pb-md-5 pb-lg-6 pt-md-6 pt-lg-7">
+        <h2 class="text-center pt-2 pt-md-0 mb-5">Speakers</h2>
+        <div class="row pb-3 pb-md-0">
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
+            <div class="card card-curved-body card-hover border-0 shadow mx-auto" style="max-width: 20rem;"><a class="card-floating-icon" href="#"><i class="ai-instagram"></i></a>
+              <div class="card-img-top card-img-gradient"><img src="{% static 'img/team/01.jpg' %}" alt="Sarah Cole"></div>
+              <div class="card-body text-center">
+                <h3 class="h6 card-title mb-2">Sarah Cole</h3>
+                <p class="fs-xs text-body mb-0">Social media strategist</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
+            <div class="card card-curved-body card-hover border-0 shadow mx-auto" style="max-width: 20rem;"><a class="card-floating-icon" href="#"><i class="ai-instagram"></i></a>
+              <div class="card-img-top card-img-gradient"><img src="{% static 'img/team/02.jpg' %}" alt="Charlie Welch"></div>
+              <div class="card-body text-center">
+                <h3 class="h6 card-title mb-2">Charlie Welch</h3>
+                <p class="fs-xs text-body mb-0">Instagram expert</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
+            <div class="card card-curved-body card-hover border-0 shadow mx-auto" style="max-width: 20rem;"><a class="card-floating-icon" href="#"><i class="ai-instagram"></i></a>
+              <div class="card-img-top card-img-gradient"><img src="{% static 'img/team/03.jpg' %}" alt="Emma Brown"></div>
+              <div class="card-body text-center">
+                <h3 class="h6 card-title mb-2">Emma Brown</h3>
+                <p class="fs-xs text-body mb-0">Content creator</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
+            <div class="card card-curved-body card-hover border-0 shadow mx-auto" style="max-width: 20rem;"><a class="card-floating-icon" href="#"><i class="ai-instagram"></i></a>
+              <div class="card-img-top card-img-gradient"><img src="{% static 'img/team/04.jpg' %}" alt="Rosalie Lyons"></div>
+              <div class="card-body text-center">
+                <h3 class="h6 card-title mb-2">Rosalie Lyons</h3>
+                <p class="fs-xs text-body mb-0">Social media educator</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
+            <div class="card card-curved-body card-hover border-0 shadow mx-auto" style="max-width: 20rem;"><a class="card-floating-icon" href="#"><i class="ai-instagram"></i></a>
+              <div class="card-img-top card-img-gradient"><img src="{% static 'img/team/05.jpg' %}" alt="Jane Tanaka"></div>
+              <div class="card-body text-center">
+                <h3 class="h6 card-title mb-2">Jane Tanaka</h3>
+                <p class="fs-xs text-body mb-0">Social media strategist</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
+            <div class="card card-curved-body card-hover border-0 shadow mx-auto" style="max-width: 20rem;"><a class="card-floating-icon" href="#"><i class="ai-instagram"></i></a>
+              <div class="card-img-top card-img-gradient"><img src="{% static 'img/team/06.jpg' %}" alt="Sanomi Smith"></div>
+              <div class="card-body text-center">
+                <h3 class="h6 card-title mb-2">Sanomi Smith</h3>
+                <p class="fs-xs text-body mb-0">Model and influencer</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
+            <div class="card card-curved-body card-hover border-0 shadow mx-auto" style="max-width: 20rem;"><a class="card-floating-icon" href="#"><i class="ai-instagram"></i></a>
+              <div class="card-img-top card-img-gradient"><img src="{% static 'img/team/07.jpg' %}" alt="Olivia Jones"></div>
+              <div class="card-body text-center">
+                <h3 class="h6 card-title mb-2">Olivia Jones</h3>
+                <p class="fs-xs text-body mb-0">Content creator</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
+            <div class="card card-curved-body card-hover border-0 shadow mx-auto" style="max-width: 20rem;"><a class="card-floating-icon" href="#"><i class="ai-instagram"></i></a>
+              <div class="card-img-top card-img-gradient"><img src="{% static 'img/team/08.jpg' %}" alt="Richard Davis"></div>
+              <div class="card-body text-center">
+                <h3 class="h6 card-title mb-2">Richard Davis</h3>
+                <p class="fs-xs text-body mb-0">Travel content creator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Split section (Video popup)-->
+      <section class="bg-secondary">
+        <div class="row g-0">
+          <div class="col-md-6 jarallax py-7" data-jarallax data-speed="0.3"><span class="position-absolute top-0 start-0 w-100 h-100 bg-black" style="opacity: 40%;"></span>
+            <div class="jarallax-img" style="background-image: url({% static 'img/demo/event-landing/video-bg.jpg' %});"></div>
+            <div class="position-relative zindex-5 d-flex flex-column align-items-center justify-content-center h-100 px-3 py-4 py-lg-7"><a class="btn-video mb-3" href="https://www.youtube.com/watch?v=zpmRmIFnO6c" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Instagram Marketing Conference 2020&lt;/h6&gt;"></a><span class="fw-medium text-light">Click me to watch video!</span></div>
+          </div>
+          <div class="col-md-6 px-3 pe-xl-0 ps-lg-5 ps-xl-6 py-2 py-lg-4">
+            <div class="ms-sm-4 py-5 my-sm-0 py-md-6 py-lg-7" style="max-width: 520px;">
+              <h2 class="mb-5">Why you should join the event?</h2>
+              <div class="d-flex align-items-start mb-grid-gutter"><img class="d-block mt-1" src="{% static 'img/demo/event-landing/icons/01.svg' %}" alt="Icon" width="43">
+                <div class="ps-4 ms-2">
+                  <h3 class="h5 mb-1">Latest technology &amp; Content</h3>
+                  <p class="fs-sm mb-0">Nam libero tempore, cum soluta nobis est eligendi optio cumque.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-start mb-grid-gutter"><img class="d-block mt-1" src="{% static 'img/demo/event-landing/icons/02.svg' %}" alt="Icon" width="43">
+                <div class="ps-4 ms-2">
+                  <h3 class="h5 mb-1">Creativity &amp; Storytelling</h3>
+                  <p class="fs-sm mb-0">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia occaecati cupiditate non provident.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-start"><img class="d-block mt-1" src="{% static 'img/demo/event-landing/icons/03.svg' %}" alt="Icon" width="43">
+                <div class="ps-4 ms-2">
+                  <h3 class="h5 mb-1">Monetization &amp; Commerce</h3>
+                  <p class="fs-sm mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Statistics (Digits)-->
+      <section class="container py-4 pt-md-6 pt-lg-7 pb-md-5">
+        <div class="row pb-lg-4 pt-3">
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-grid-gutter">
+            <h3 class="display-2 fw-normal mb-0">3</h3>
+            <p class="text-muted fs-lg mb-0">Days</p>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-grid-gutter">
+            <h3 class="display-2 fw-normal mb-0">10</h3>
+            <p class="text-muted fs-lg mb-0">Daily<br>workshops</p>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-grid-gutter">
+            <h3 class="display-2 fw-normal mb-0">6+</h3>
+            <p class="text-muted fs-lg mb-0">Group<br>discussions</p>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-grid-gutter">
+            <h3 class="display-2 fw-normal mb-0">8</h3>
+            <p class="text-muted fs-lg mb-0">Speakers</p>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-grid-gutter">
+            <h3 class="display-2 fw-normal mb-0">5</h3>
+            <p class="text-muted fs-lg mb-0">Countries</p>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-grid-gutter">
+            <h3 class="display-2 fw-normal mb-0">900</h3>
+            <p class="text-muted fs-lg mb-0">Guests</p>
+          </div>
+        </div>
+      </section>
+      <!-- Schedule-->
+      <section class="bg-secondary pt-5 pb-3 pt-md-6 pb-md-4 pt-lg-7 pb-lg-5">
+        <div class="container pt-3 pt-md-0">
+          <h2 class="text-center mb-5">Schedule</h2>
+          <!-- Nav tabs-->
+          <ul class="nav nav-tabs fancy-tabs mb-5 mx-auto" style="max-width: 50rem;" role="tablist">
+            <li class="nav-item"><a class="nav-link" href="#day-1" data-bs-toggle="tab" role="tab"><span class="fancy-tab-text h1 fw-normal">10/11</span><span class="fancy-tab-shape"></span></a></li>
+            <li class="nav-item"><a class="nav-link active" href="#day-2" data-bs-toggle="tab" role="tab"><span class="fancy-tab-text h1 fw-normal">10/12</span><span class="fancy-tab-shape"></span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#day-3" data-bs-toggle="tab" role="tab"><span class="fancy-tab-text h1 fw-normal">10/13</span><span class="fancy-tab-shape"></span></a></li>
+          </ul>
+          <!-- Tabs content-->
+          <div class="tab-content">
+            <!-- Day 1-->
+            <div class="tab-pane fade" id="day-1" role="tabpanel">
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">10:00 - 10:50</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Registartion</div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">11:00 - 12:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/05.jpg' %}" alt="Tim Brooks" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Tim Brooks</div>
+                        <p class="fs-sm mb-2">Excepteur sint occaecat cupidatat non proident</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Improve your profile visibility. Tips &amp; tricks from the field expert.</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">13:00 - 14:00</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Lunch break</div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">14:30 - 15:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/03.jpg' %}" alt="Jane Tanaka" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Jane Tanaka</div>
+                        <p class="fs-sm mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Instagram marketing for E-commerce</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">16:00 - 17:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/01.jpg' %}" alt="Sanomi Smith" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Sanomi Smith</div>
+                        <p class="fs-sm mb-2">Nemo enim ipsam voluptatem quia voluptas</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">How to drive your brand awareness on Instagram.</a></h3>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/02.jpg' %}" alt="Richard Davis" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Richard Davis</div>
+                        <p class="fs-sm mb-2">At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Increase traffic and sales with effective Instagram marketing strategies.</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">18:00 - 19:30</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Dinner</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Day 2-->
+            <div class="tab-pane fade show active" id="day-2" role="tabpanel">
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">10:00 - 10:50</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Registartion</div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">11:00 - 12:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/01.jpg' %}" alt="Sanomi Smith" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Sanomi Smith</div>
+                        <p class="fs-sm mb-2">Nemo enim ipsam voluptatem quia voluptas</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">How to drive your brand awareness on Instagram.</a></h3>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/02.jpg' %}" alt="Richard Davis" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Richard Davis</div>
+                        <p class="fs-sm mb-2">At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Increase traffic and sales with effective Instagram marketing strategies.</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">13:00 - 14:00</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Lunch break</div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">14:30 - 15:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/03.jpg' %}" alt="Jane Tanaka" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Jane Tanaka</div>
+                        <p class="fs-sm mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Improve your profile visibility. Tips &amp; tricks from the field expert.</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">16:00 - 17:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/04.jpg' %}" alt="Sarah Cole" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Sarah Cole</div>
+                        <p class="fs-sm mb-2">Excepteur sint occaecat cupidatat non proident</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Instagram marketing for E-commerce</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">18:00 - 19:30</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Dinner</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Day 3-->
+            <div class="tab-pane fade" id="day-3" role="tabpanel">
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">10:00 - 10:50</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Registartion</div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">11:00 - 12:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/04.jpg' %}" alt="Sarah Cole" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Sarah Cole</div>
+                        <p class="fs-sm mb-2">Excepteur sint occaecat cupidatat non proident</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Instagram marketing for E-commerce</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">13:00 - 14:00</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Lunch break</div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">14:30 - 15:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/03.jpg' %}" alt="Jane Tanaka" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Jane Tanaka</div>
+                        <p class="fs-sm mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Improve your profile visibility. Tips &amp; tricks from the field expert.</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">16:00 - 17:45</div>
+                  </div>
+                  <div class="col-lg-10 col-sm-9">
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/01.jpg' %}" alt="Sanomi Smith" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Sanomi Smith</div>
+                        <p class="fs-sm mb-2">Nemo enim ipsam voluptatem quia voluptas</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">How to drive your brand awareness on Instagram.</a></h3>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start py-3 mb-2"><img class="rounded-circle" src="{% static 'img/demo/event-landing/speakers/02.jpg' %}" alt="Richard Davis" width="75">
+                      <div class="ms-4" style="max-width: 420px;">
+                        <div class="h6 text-body mb-2">Richard Davis</div>
+                        <p class="fs-sm mb-2">At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+                        <h3 class="h4 nav-heading mb-0"><a href="#">Increase traffic and sales with effective Instagram marketing strategies.</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-4">
+                <div class="row py-md-2">
+                  <div class="col-lg-2 col-sm-3">
+                    <div class="h6 text-body mb-0 py-3">18:00 - 19:30</div>
+                  </div>
+                  <div class="col-sm-9 offset-lg-1">
+                    <div class="h6 text-body mb-0 py-3">Gala dinner</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contacts + Gallery-->
+      <section class="container py-5 py-md-6 py-lg-7">
+        <div class="row py-3">
+          <div class="col-lg-4 col-md-5 mb-5 mb-md-0">
+            <h2 class="mb-3">Location</h2>
+            <p class="fs-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <h3 class="h6">Hotel Oranfe</h3>
+            <ul class="list-unstyled mb-5">
+              <li class="mb-0">2703  Evergreen Lane</li>
+              <li class="mb-0">Los Angeles, California</li>
+            </ul>
+            <ul class="list-unstyled mb-5">
+              <li class="d-flex align-items-center mb-2"><i class="ai-check-square fs-xl me-2"></i><span class="fw-semibold ps-1">Parking for free</span></li>
+              <li class="d-flex align-items-center mb-2"><i class="ai-check-square fs-xl me-2"></i><span class="fw-semibold ps-1">Cafe and restaurant</span></li>
+              <li class="d-flex align-items-center"><i class="ai-check-square fs-xl me-2"></i><span class="fw-semibold ps-1">Book room</span></li>
+            </ul>
+            <div class="gallery"><a class="gallery-item map-popup rounded-circle text-center" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26435.920790306365!2d-118.41704346384354!3d34.08258320225705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc04d6d147ab%3A0xd6c7c379fd081ed1!2sBeverly%20Hills%2C%20CA%2C%20USA!5e0!3m2!1sen!2sua!4v1589884573291!5m2!1sen!2sua" data-iframe="true" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;2703  Evergreen Lane, Los Angeles, CA&lt;/h6&gt;" style="max-width: 312px;"><img src="{% static 'img/demo/event-landing/map.png' %}" alt="Map"><span class="gallery-caption"><i class="ai-maximize-2 fs-xl mt-n1 me-2"></i>Expand the map</span></a></div>
+          </div>
+          <div class="col-xl-6 col-md-7 offset-xl-2 offset-lg-1 px-sm-3">
+            <div class="row mx-n2 mx-sm-n3 gallery">
+              <div class="col-6 px-2 px-md-3"><a class="gallery-item rounded-3 mb-3 mb-md-0" href="{% static 'img/demo/event-landing/gallery/01.jpg' %}" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Conference restaurant&lt;/h6&gt;"><img src="{% static 'img/demo/event-landing/gallery/th01.jpg' %}" alt="Gallery thumbnail"><span class="gallery-caption">Conference restaurant</span></a>
+                <div class="d-none d-md-block mb-grid-gutter"></div><a class="gallery-item rounded-3" href="{% static 'img/demo/event-landing/gallery/03.jpg' %}" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Confernce cafe&lt;/h6&gt;"><img src="{% static 'img/demo/event-landing/gallery/th03.jpg' %}" alt="Gallery thumbnail"><span class="gallery-caption">Confernce cafe</span></a>
+              </div>
+              <div class="col-6 px-2 px-md-3 pt-md-6"><a class="gallery-item rounded-3 mb-3 mb-md-0" href="{% static 'img/demo/event-landing/gallery/02.jpg' %}" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Main auditorium&lt;/h6&gt;"><img src="{% static 'img/demo/event-landing/gallery/th02.jpg' %}" alt="Gallery thumbnail"><span class="gallery-caption">Main auditorium</span></a>
+                <div class="d-none d-md-block mb-grid-gutter"></div><a class="gallery-item rounded-3" href="{% static 'img/demo/event-landing/gallery/04.jpg' %}" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Meeting room&lt;/h6&gt;"><img src="{% static 'img/demo/event-landing/gallery/th04.jpg' %}" alt="Gallery thumbnail"><span class="gallery-caption">Meeting room</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Tickets-->
+      <section class="container position-relative zindex-5 mt-2 mt-md-5" id="tickets">
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-md-11">
+            <div class="bg-gradient rounded-3 pt-5 px-4 pb-4 p-sm-5">
+              <div class="px-md-4">
+                <h2 class="text-light text-center pb-4">Buy tickets</h2>
+                <div class="d-sm-flex justify-content-between align-items-center bg-light rounded-3 px-3 py-4 p-sm-4 mb-grid-gutter text-center text-sm-start">
+                  <div class="me-sm-3 mb-4 mb-sm-0">
+                    <h3 class="h6 mb-2">Full conference pass</h3>
+                    <p class="mb-0">3 days full access + Lunch + Gifts</p>
+                  </div><a class="btn btn-primary" href="#">Buy Now</a>
+                </div>
+                <div class="d-sm-flex justify-content-between align-items-center bg-light rounded-3 px-3 py-4 p-sm-4 mb-grid-gutter text-center text-sm-start">
+                  <div class="me-sm-3 mb-4 mb-sm-0">
+                    <h3 class="h6 mb-2">1 day pass</h3>
+                    <p class="mb-0">1 day full access + Lunch + Gifts</p>
+                  </div><a class="btn btn-primary" href="#">Buy Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Partners (logos)-->
+      <section class="position-relative bg-secondary pt-5 pb-4 pb-md-5 pt-md-6 pt-lg-7" style="margin-top: -260px;">
+        <div style="height: 260px;"></div>
+        <div class="shape shape-top shape-curve bg-body">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+            <path fill="currentColor" d="M3000,185.4V0H0v185.4C496.4,69.8,996.4,12,1500,12S2503.6,69.8,3000,185.4z"></path>
+          </svg>
+        </div>
+        <div class="container pt-3 pt-md-0 pb-md-2">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="row">
+                <div class="col-md-3 col-sm-4 col-6 text-center"><a class="swap-image mb-grid-gutter" href="#"><img class="swap-to" src="{% static 'img/demo/event-landing/partners/01_color.png' %}" alt="Logo" width="176"><img class="swap-from" src="{% static 'img/demo/event-landing/partners/01_gray.png' %}" alt="Logo" width="176"></a></div>
+                <div class="col-md-3 col-sm-4 col-6 text-center"><a class="swap-image mb-grid-gutter" href="#"><img class="swap-to" src="{% static 'img/demo/event-landing/partners/02_color.png' %}" alt="Logo" width="176"><img class="swap-from" src="{% static 'img/demo/event-landing/partners/02_gray.png' %}" alt="Logo" width="176"></a></div>
+                <div class="col-md-3 col-sm-4 col-6 text-center"><a class="swap-image mb-grid-gutter" href="#"><img class="swap-to" src="{% static 'img/demo/event-landing/partners/03_color.png' %}" alt="Logo" width="176"><img class="swap-from" src="{% static 'img/demo/event-landing/partners/03_gray.png' %}" alt="Logo" width="176"></a></div>
+                <div class="col-md-3 col-sm-4 col-6 text-center"><a class="swap-image mb-grid-gutter" href="#"><img class="swap-to" src="{% static 'img/demo/event-landing/partners/04_color.png' %}" alt="Logo" width="176"><img class="swap-from" src="{% static 'img/demo/event-landing/partners/04_gray.png' %}" alt="Logo" width="176"></a></div>
+                <div class="col-md-3 col-sm-4 col-6 text-center"><a class="swap-image mb-grid-gutter" href="#"><img class="swap-to" src="{% static 'img/demo/event-landing/partners/05_color.png' %}" alt="Logo" width="176"><img class="swap-from" src="{% static 'img/demo/event-landing/partners/05_gray.png' %}" alt="Logo" width="176"></a></div>
+                <div class="col-md-3 col-sm-4 col-6 text-center"><a class="swap-image mb-grid-gutter" href="#"><img class="swap-to" src="{% static 'img/demo/event-landing/partners/06_color.png' %}" alt="Logo" width="176"><img class="swap-from" src="{% static 'img/demo/event-landing/partners/06_gray.png' %}" alt="Logo" width="176"></a></div>
+                <div class="col-md-3 col-sm-4 col-6 text-center"><a class="swap-image mb-grid-gutter" href="#"><img class="swap-to" src="{% static 'img/demo/event-landing/partners/07_color.png' %}" alt="Logo" width="176"><img class="swap-from" src="{% static 'img/demo/event-landing/partners/07_gray.png' %}" alt="Logo" width="176"></a></div>
+                <div class="col-md-3 col-sm-4 col-6 text-center"><a class="swap-image mb-grid-gutter" href="#"><img class="swap-to" src="{% static 'img/demo/event-landing/partners/08_color.png' %}" alt="Logo" width="176"><img class="swap-from" src="{% static 'img/demo/event-landing/partners/08_gray.png' %}" alt="Logo" width="176"></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer-->
+    <footer class="footer bg-dark pt-5 pt-md-6">
+      <div class="container pt-3 pt-md-0">
+        <div class="row pb-3">
+          <div class="col-md-4 mt-n2 pb-3 pb-md-0 mb-4"><a class="d-block mb-3" href="index-2.html" style="width: 153px;text-decoration: none;font-size: xx-large">StepSassAutomation</a>
+            <p class="fs-sm text-light opacity-60 pb-2 pb-sm-3">Highly customizable and modular official multipurpose Bootstrap template and UI kit.</p><a class="btn-social bs-outline bs-facebook bs-light bs-lg me-2 mb-2" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-outline bs-twitter bs-light bs-lg me-2 mb-2" href="#"><i class="ai-twitter"></i></a><a class="btn-social bs-outline bs-instagram bs-light bs-lg me-2 mb-2" href="#"><i class="ai-instagram"></i></a><a class="btn-social bs-outline bs-google bs-light bs-lg me-2 mb-2" href="#"><i class="ai-google"></i></a>
+          </div>
+          <div class="col-md-2 col-sm-4 ms-auto pb-1 mb-4">
+            <div class="widget widget-light">
+              <h4 class="widget-title">Company</h4>
+              <ul>
+                <li><a class="widget-link" href="#">About</a></li>
+                <li><a class="widget-link" href="#">Careers</a></li>
+                <li><a class="widget-link" href="#">Press</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="my-0 border-light">
+        <div class="row align-items-center mt-3 py-4">
+          <div class="col-md-6 order-md-2 text-md-end mb-3">
+            <ul class="list-inline fs-sm mb-0">
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Support</a></li>
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Contacts</a></li>
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 order-md-1 mb-3">
+            <p class="fs-sm mb-0"><span class="text-light opacity-50 me-1">© All rights reserved. Made by</span><a class="nav-link-style nav-link-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/simplebar/dist/simplebar.min.js' %}"></script>
+    <script src="{% static 'vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js' %}"></script>
+    <script src="{% static 'vendor/jarallax/dist/jarallax.min.js' %}"></script>
+    <script src="{% static 'vendor/jarallax/dist/jarallax-element.min.js' %}"></script>
+    <script src="{% static 'vendor/lightgallery.js/dist/js/lightgallery.min.js' %}"></script>
+    <script src="{% static 'vendor/lg-fullscreen.js/dist/lg-fullscreen.min.js' %}"></script>
+    <script src="{% static 'vendor/lg-zoom.js/dist/lg-zoom.min.js' %}"></script>
+    <script src="{% static 'vendor/lg-video.js/dist/lg-video.min.js' %}"></script>
+    <!-- Main theme script-->
+    <script src="{% static 'js/theme.min.js' %}"></script>
+  </body>
+
+<!-- Mirrored from around.createx.studio/demo-event-landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:15:59 GMT -->
+</html>

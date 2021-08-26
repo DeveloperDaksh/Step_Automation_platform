@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from around.createx.studio/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:08:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Around | Multipurpose Bootstrap Template</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/account/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/account/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/account/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+    <link rel="mask-icon" color="#5bbad5" href="{% static 'safari-pinned-tab.svg' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'js/auth.js' %}"></script>
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/simplebar/dist/simplebar.min.css' %}"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="{% static 'css/theme.min.css' %}">
+    <!-- Google Tag Manager-->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WKV3GT5');
+    </script>
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Sign In Modal-->
+      <div class="modal fade" id="modal-signin" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content border-0">
+            <div class="view show" id="modal-signin-view">
+              <div class="modal-header border-0 bg-dark px-4">
+                <h4 class="modal-title text-light">Sign in</h4>
+                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="btn-close "></button>
+              </div>
+              <div class="modal-body px-4">
+                <p class="fs-ms text-muted">Sign in to your account using email and password provided during registration.</p>
+                <p id="login-msg"></p>
+                <form class="needs-validation" novalidate action="signin" method="post">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="input-group"><i class="ai-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                      <input class="form-control rounded" type="text" placeholder="Email or Username" name="email" id="emaill" autocomplete="false" required>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="input-group"><i class="ai-lock position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                      <div class="password-toggle w-100">
+                        <input class="form-control" type="password" placeholder="Password" name="password" id="passwordl" required>
+                        <label class="password-toggle-btn" aria-label="Show/hide password">
+                          <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3 mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="keepme" id="keep-signed" name="keepsignin">
+                      <label class="form-check-label fs-sm" for="keep-signed">Keep me signed in</label>
+                    </div><a class="nav-link-style fs-ms" href="password-recovery.html">Forgot password?</a>
+                  </div>
+                  <button class="btn btn-primary d-block w-100" type="submit" id="submitl">Sign in</button>
+                  <p class="fs-sm pt-3 mb-0">Don't have an account? <a href='#' class='fw-medium' data-view='#modal-signup-view'>Sign up</a></p>
+                </form>
+              </div>
+            </div>
+            <div class="view" id="modal-signup-view">
+              <div class="modal-header border-0 bg-dark px-4">
+                <h4 class="modal-title text-light">Sign up</h4>
+                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="btn-close"></button>
+              </div>
+              <div class="modal-body px-4">
+                <p class="fs-ms text-muted">Registration takes less than a minute but gives you full control over your orders.</p>
+                  <p id="register-message"></p>
+                <form class="needs-validation" novalidate method="post">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Fist Name" name="first_name" id="first_name" required>
+                  </div>
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Last name" name="last_name" id="last_name" required>
+                  </div>
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Email" name="email" id="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Username" name="username" id="username" required>
+                  </div>
+                  <div class="mb-3 password-toggle">
+                    <input class="form-control" type="password" placeholder="Password" name="password" id="password" required>
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                    </label>
+                  </div>
+                  <div class="mb-3 password-toggle">
+                    <input class="form-control" type="password" placeholder="Confirm password" name="cpassword" id="cpassword" required>
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                    </label>
+                  </div>
+                  <button class="btn btn-primary d-block w-100" type="submit" id="submitb">Sign up</button>
+                  <p class="fs-sm pt-3 mb-0">Already have an account? <a href='#' class='fw-medium' data-view='#modal-signin-view'>Sign in</a></p>
+                </form>
+              </div>
+            </div>
+            <div class="modal-body text-center px-4 pt-2 pb-4">
+              <hr class="my-0">
+              <p class="fs-sm fw-medium text-heading pt-4">Or sign in with</p><a class="btn-social bs-facebook bs-lg mx-1 mb-2" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-twitter bs-lg mx-1 mb-2" href="#"><i class="ai-twitter"></i></a><a class="btn-social bs-instagram bs-lg mx-1 mb-2" href="#"><i class="ai-instagram"></i></a><a class="btn-social bs-google bs-lg mx-1 mb-2" href="#"><i class="ai-google"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar Floating light for Index page only-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-dark navbar-floating navbar-sticky" data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index-2.html">StepSaasAutomation</a>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto"><a class="nav-link-style fs-sm text-nowrap" href="#modal-signin" data-bs-toggle="modal" data-view="#modal-signin-view"><i class="ai-user fs-xl me-2 align-middle"></i>Sign in</a><a class="btn btn-primary ms-grid-gutter d-none d-lg-inline-block navbar-btn" href="#modal-signin" data-bs-toggle="modal" data-view="#modal-signup-view">Sign up</a><a class="btn btn-primary ms-grid-gutter d-none d-lg-inline-block navbar-stuck-btn" href="#modal-signin" data-bs-toggle="modal" data-view="#modal-signup-view">Sign up</a></div>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto"><a class="btn btn-primary" href="https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/" target="_blank" rel="noopener"><i class="ai-shopping-cart fs-lg me-2"></i>Buy <span class='d-none d-lg-inline'>Template</span></a></div>
+          <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="offcanvas-cap navbar-shadow">
+              <h5 class="mt-1 mb-0">Menu</h5>
+              <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- Menu-->
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown dropdown-mega active">
+                    <a class="nav-link dropdown-toggle" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown dropdown-mega">
+                    <a class="nav-link dropdown-toggle" href="/about">About Us</a>
+                </li>
+                  <li class="nav-item dropdown dropdown-mega">
+                    <a class="nav-link dropdown-toggle" href="/contacts-v3">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Page content-->
+      <!-- Intro-->
+      <section class="d-flex align-items-center position-relative bg-dark bg-size-cover bg-position-center min-vh-100 overflow-hidden pt-6 pb-lg-5" style="background-image: url({% static 'img/demo/presentation/intro/bg.jpg' %});">
+        <div class="container-fluid pt-4 pb-5 py-lg-5">
+          <div class="row align-items-center py-3">
+            <div class="col-xl-6 col-lg-5 d-flex justify-content-end">
+              <div class="pt-2 mx-auto mb-5 mb-lg-0 ms-lg-0 me-xl-7 text-center text-lg-start" style="max-width: 495px;">
+                <h1 class="display-4 text-light pb-2"><span class="fw-light">Have a look </span>Around!</h1>
+                <p class="h4 fw-light text-light opacity-70 line-height-base">And you will find everything you need to build a great looking website.</p><a class="d-inline-flex align-items-center text-decoration-none pt-2 mt-4 mb-5" href="#demos" data-scroll><span class="btn btn-icon rounded-circle border-light flex-shrink-0 px-3"><i class="ai-arrow-down h4 text-light my-1"></i></span><span class="ms-3 text-light fw-medium">View Demos</span></a>
+                <hr class="hr-light mt-0 mb-5">
+                <div class="row">
+                  <div class="col-sm-4 mb-4 mb-sm-0">
+                    <div class="h1 text-light mb-1">14</div>
+                    <div class="h5 text-light fw-normal opacity-70 mb-2">Demo Homepages</div><span class="badge rounded-pill bg-success">More coming</span>
+                  </div>
+                  <div class="col-sm-4 mb-4 mb-sm-0">
+                    <div class="h1 text-light mb-1">50+</div>
+                    <div class="h5 text-light fw-normal opacity-70 mb-1">Flexible Components</div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="h1 text-light mb-1">47</div>
+                    <div class="h5 text-light fw-normal opacity-70 mb-1">Inner Page Templates</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-7">
+              <div class="parallax ms-lg-n5" style="max-width: 920px;">
+                <div class="parallax-layer position-relative" data-depth="0.1"><img src="{% static 'img/demo/presentation/intro/layer01.png' %}" alt="Layer"></div>
+                <div class="parallax-layer" style="z-index: 2;" data-depth="0.3"><img src="{% static 'img/demo/presentation/intro/layer02.png' %}" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.2"><img src="{% static 'img/demo/presentation/intro/layer03.png' %}" alt="Layer"></div>
+                <div class="parallax-layer" style="z-index: 3;" data-depth="0.1"><img src="{% static 'img/demo/presentation/intro/layer04.png' %}" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.15"><img src="{% static 'img/demo/presentation/intro/layer05.png' %}" alt="Layer"></div>
+                <div class="parallax-layer" style="z-index: 4;" data-depth="0.25"><img src="{% static 'img/demo/presentation/intro/layer06.png' %}" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.3"><img src="{% static 'img/demo/presentation/intro/layer07.png' %}" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.4"><img src="{% static 'img/demo/presentation/intro/layer08.png' %}" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.35"><img src="{% static 'img/demo/presentation/intro/layer09.png' %}" alt="Layer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Demos-->
+      <section class="bg-secondary" id="demos">
+        <div class="container pt-5 pb-4 py-md-6 py-lg-7">
+          <div class="text-center mb-5 pt-3 pt-lg-4">
+            <h2 class="h1 mb-4">Homepage <span class='bg-faded-primary rounded text-primary px-3 py-2'>Demos</span></h2>
+            <p class="text-muted">Choose from pre-built layouts of our unique homepage demos</p>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-business-consulting">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/business-consulting.jpg' %}" alt="Business Consulting"></div>
+                <h3 class="h5 nav-heading-title mb-0">Business Consulting</h3><span class="fs-sm fw-normal text-muted">Corporate, Business, Agency</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-shop-homepage">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/shop-homepage.jpg' %}" alt="Shop Homepage"></div>
+                <h3 class="h5 nav-heading-title mb-0">Shop Homepage</h3><span class="fs-sm fw-normal text-muted">E-Commerce, Retail, Electronics, Fashion</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-booking-directory">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/booking.jpg' %}" alt="Booking &amp;amp; Directory"></div>
+                <h3 class="h5 nav-heading-title mb-0">Booking / Directory</h3><span class="fs-sm fw-normal text-muted">Listings, Flights, Destinations</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-creative-agency">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/creative-agency.jpg' %}" alt="Creative Agency"></div>
+                <h3 class="h5 nav-heading-title mb-0">Creative Agency</h3><span class="fs-sm fw-normal text-muted">Creative Business, Portfolio, Agency</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-web-studio">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/web-studio.jpg' %}" alt="Web Studio"></div>
+                <h3 class="h5 nav-heading-title mb-0">Web Studio</h3><span class="fs-sm fw-normal text-muted">Web Design, Portfolio, Agency</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-product-software">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/software-landing.jpg' %}" alt="Product Landing - Software"></div>
+                <h3 class="h5 nav-heading-title mb-0">Product Landing - Software</h3><span class="fs-sm fw-normal text-muted">Software, Showcase, Landing Page</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-product-gadget">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/gadget-landing.jpg' %}" alt="Product Landing - Gadget"></div>
+                <h3 class="h5 nav-heading-title mb-0">Product Landing - Gadget</h3><span class="fs-sm fw-normal text-muted">Gadget, Showcase, Landing Page</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-mobile-app">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/mobile-app.jpg' %}" alt="Mobile App Showcase"></div>
+                <h3 class="h5 nav-heading-title mb-0">Mobile App Showcase</h3><span class="fs-sm fw-normal text-muted">Mobile App, Showcase, Landing</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-coworking-space">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/coworking.jpg' %}" alt="Coworkin Space"></div>
+                <h3 class="h5 nav-heading-title mb-0">Coworking Space</h3><span class="fs-sm fw-normal text-muted">Coworking Space Landing Page</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-event-landing">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/event-landing.jpg' %}" alt="Event Landing"></div>
+                <h3 class="h5 nav-heading-title mb-0">Event Landing</h3><span class="fs-sm fw-normal text-muted">Landing Page, Event, Countdown, Tickets</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/template-presentation.jpg' %}" alt="Web Template Presentation"></div>
+                <h3 class="h5 nav-heading-title mb-0">Web Template Presentation</h3><span class="fs-sm fw-normal text-muted">Showcase your Web Template features beautifully</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-marketing-seo">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/marketing-seo.jpg' %}" alt="Digital Marketing &amp; SEO"></div>
+                <h3 class="h5 nav-heading-title mb-0">Digital Marketing &amp; SEO</h3><span class="fs-sm fw-normal text-muted">Marketing services, Agency, Portfolio</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-food-blog">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/food-blog.jpg' %}" alt="Food Blog"></div>
+                <h3 class="h5 nav-heading-title mb-0">Food Blog</h3><span class="fs-sm fw-normal text-muted">Cooking, Recipes, Personal Blog</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="/demo-personal-portfolio">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="{% static 'img/demo/presentation/demos/personal-portfolio.jpg' %}" alt="Personal Portfolio"></div>
+                <h3 class="h5 nav-heading-title mb-0">Personal Portfolio</h3><span class="fs-sm fw-normal text-muted">Cooking, Recipes, Personal Blog</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><img class="d-block mb-4" src="{% static 'img/demo/presentation/demos/coming.png' %}" alt="Coming">
+              <h3 class="h5 text-center mb-0">Coming Soon</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Components-->
+      <section class="bg-gradient py-5 py-md-6 py-lg-7">
+        <div class="container-fluid py-3 py-lg-4 overflow-hidden">
+          <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-5 d-flex justify-content-end mb-5 mb-lg-0">
+              <div class="mx-auto ms-lg-0 me-xl-7 text-center text-lg-start" style="max-width: 495px;">
+                <h2 class="h1 text-light mb-4">Flexible <span class='bg-faded-light rounded px-3 py-2'>Components</span></h2>
+                <p class="text-light opacity-70 mb-5">The complete UI Kit with over 50 modular and highly customizable components: Bootstrap + Around unique elements.</p>
+                <div class="row mb-2 mx-n2">
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/carousel.html"><img class="d-inline-block opacity-60 mb-3" src="{% static 'img/demo/presentation/icons/carousel.svg' %}" alt="Sliders &amp; Carousels" width="68">
+                      <h3 class="h6 text-light mb-0">Sliders &amp; Carousels</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/gallery.html"><img class="d-inline-block opacity-60 mb-3" src="{% static 'img/demo/presentation/icons/gallery.svg' %}" alt="Image / Video Gallery" width="45">
+                      <h3 class="h6 text-light mb-0">Image / Video Gallery</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/charts.html"><img class="d-inline-block opacity-60 mb-3" src="{% static 'img/demo/presentation/icons/chart.svg' %}" alt="Line, Bar &amp; Pie Charts" width="39">
+                      <h3 class="h6 text-light mb-0">Line, Bar &amp; Pie Charts</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/video-popup.html"><img class="d-inline-block opacity-60 mb-3" src="{% static 'img/demo/presentation/icons/play.svg' %}" alt="Video Popup &amp; Embed" width="44">
+                      <h3 class="h6 text-light mb-0">Video Popup &amp; Embed</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/forms.html"><img class="d-inline-block opacity-60 mb-3" src="{% static 'img/demo/presentation/icons/forms.svg' %}" alt="Form Controls" width="42">
+                      <h3 class="h6 text-light mb-0">Form Controls</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/testimonials.html"><img class="d-inline-block opacity-60 mb-3" src="{% static 'img/demo/presentation/icons/review.svg' %}" alt="Testimonials &amp; Reviews" width="46">
+                      <h3 class="h6 text-light mb-0">Testimonials &amp; Reviews</h3></a></div>
+                </div><a class="btn btn-success" href="components/typography.html">View All Components</a>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-7 d-flex justify-content-end pe-0"><a class="d-block me-n3" href="components/hotspots.html"><img class="d-block" src="{% static 'img/demo/presentation/macbook.png' %}" alt="Components"></a></div>
+          </div>
+        </div>
+      </section>
+      <!-- Inner Pages-->
+      <section class="py-5 py-md-6 py-lg-7">
+        <div class="container pb-3 pt-4 pb-lg-2">
+          <div class="row justify-content-center mb-4 pb-2">
+            <div class="col-xl-6 col-lg-7 col-md-8">
+              <h2 class="h1 mb-4 text-center">Handcrafted <span class='bg-faded-primary rounded text-primary px-3 py-2'>Inner Pages</span></h2>
+              <p class="text-muted text-center">Big collection of thoroughly designed inner page templates from User Account/Dashboard to Specialty pages like 404 and Coming Soon</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <ul class="nav nav-tabs media-tabs justify-content-center justify-content-lg-start" role="tablist">
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2 active" href="#account" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="{% static 'img/demo/presentation/icons/user.svg' %}" alt="User Account" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">User Account &amp; Dashboard</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#portfolio" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="{% static 'img/demo/presentation/icons/portfolio.svg' %}" alt="Portfolio" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">Portfolio</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#ecommerce" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="{% static 'img/demo/presentation/icons/shopping-cart.svg' %}" alt="E-Commerce" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">E-Commerce</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#pages" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="{% static 'img/demo/presentation/icons/web-page.svg' %}" alt="Secondary Pages" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">Secondary Pages</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#blog" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="{% static 'img/demo/presentation/icons/blog.svg' %}" alt="Blog &amp; News" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">Blog &amp; News</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#specialty" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="{% static 'img/demo/presentation/icons/error-404.svg' %}" alt="Specialty Pages" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">Specialty Pages</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="account">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">User Account</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="account-profile.html">Profile Info</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="account-payment.html">Payment Methods</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="account-notifications.html">Notifications</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="signin-illustration.html">Sign In - Illustration</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="signin-image.html">Sign In - Image</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="signin-signup.html">Sign In - Sign Up</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="password-recovery.html">Password Recovery</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">Dashboard</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-orders.html">Orders</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-sales.html">Sales</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-messages.html">Messages</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-followers.html">Followers</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-reviews.html">Reviews</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-favorites.html">Favorites</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="portfolio">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">Portfolio Grid</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-style-1.html">Grid Style 1</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-style-2.html">Grid Style 2</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-style-3.html">Grid Style 3</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">Single Project</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-single-side-gallery-grid.html">Project Side Gallery (Grid)</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-single-side-gallery-list.html">Project Side Gallery (List)</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-single-carousel.html">Project Carousel</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-single-wide-gallery.html">Project Wide Gallery</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="ecommerce">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">Shop Layouts</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="shop-ls.html">Grid Left Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-noneGrid" href="shop-rs.html">Right Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="shop-ns.html">Grid No Sidebar</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">Shop Pages</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="shop-single.html">Single Product</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="checkout.html">Cart &amp; Checkout</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="order-tracking.html">Order Tracking</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="pages">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">Inner Pages</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="about.html">About</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-noneGrid" href="contacts-v1.html">Contacts v.1</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="contacts-v2.html">Contacts v.2</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="contacts-v3.html">Contacts v.3</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">Help Center</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="help-topics.html">Help Topics</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="help-single-topic.html">Single Topic</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="help-submit-request.html">Submit a Request</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="blog">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">Blog Layouts</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-grid-rs.html">Grid Right Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-noneGrid" href="blog-grid-ls.html">Grid Left Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-grid-ns.html">Grid No Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-list-rs.html">List Right Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-list-ls.html">List Left Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-list-ns.html">List No Sidebar</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">Single Post</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-single-rs.html">Right Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-single-ls.html">Left Sidebar</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-single-ns.html">No Sidebar</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="specialty">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">404 Error</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="404-simple.html">Simple Text</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-noneGrid" href="404-illustration.html">Illustration</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">Coming Soon</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="coming-soon-image.html">Image</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="coming-soon-illustration.html">Illustration</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Mobile Interface-->
+      <section class="bg-secondary py-5 py-md-6 py-lg-7">
+        <div class="container py-3 py-lg-4">
+          <div class="row align-items-center">
+            <div class="col-md-6 mb-5 mb-md-0">
+              <div class="mx-auto mx-md-0" style="max-width: 525px;"><img class="d-block" src="{% static 'img/demo/presentation/mobile-screens.jpg' %}" alt="Mobile screens"></div>
+            </div>
+            <div class="col-md-6 text-center text-md-start">
+              <h2 class="h1 mb-4"><span class='bg-faded-primary rounded text-primary px-3 py-2'>Mobile Friendly</span> Interface</h2>
+              <p class="text-muted mb-5">Around based on advanced fully responsive Bootstrap grid. It looks great at any screen resolution and optimized for small touch screens. Around features 2 types of navigation for handeld devices and off-canvas sidebars that are easily accessible. All sliders used in the template have swipe support.</p>
+              <div class="d-flex align-items-center justify-content-center justify-content-md-start"><img src="{% static 'img/demo/presentation/qrcode.png' %}" alt="QR Code" width="120">
+                <div class="ps-3 ps-sm-4">
+                  <div class="text-nav text-start" style="max-width: 175px;">Scan QR code to test on your device</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features-->
+      <section class="container py-5 py-md-6 py-lg-7">
+        <div class="text-center mb-5 pt-3 pt-lg-4">
+          <h2 class="h1">Around <span class='bg-faded-primary rounded text-primary px-3 py-2'>Feature Highlights</span></h2>
+        </div>
+        <div class="row pt-3 pt-lg-4">
+          <div class="col-md-6">
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Kick-start Your Development</h3>
+                <p class="fs-md mb-0">Start your development process fast and easy with Node.js and Gulp setup. Configuration files are included in download package. Full tasks automation.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Easy to Customize with Sass</h3>
+                <p class="fs-md mb-0">Around is built using Sass. Easily change colors, typography and much more. It is the most mature, stable, and powerful CSS extension language in the world.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Pug - Node Templating Engine</h3>
+                <p class="fs-md mb-0">No need to write huge amount of HTML, if you don’t want to. Pug provides features not available in plain HTML like variables, includes, mixins, functions…</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Built With Latest Bootstrap</h3>
+                <p class="fs-md mb-0">Around is the powerful e-commerce front-end solution based on Bootstrap 5 - the world's most popular responsive, mobile-first front-end component library.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">50+ Flexible Components</h3>
+                <p class="fs-md mb-0">Besides styling all default Bootstrap 5 components Around introduces lots of new flexible, customizable and reusable elements you can use across the website.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Mobile Friendly Interface</h3>
+                <p class="fs-md mb-0">It's not a surprise that nowadays over 70% of users surf the inernet and shop online using their mobile devices. Around is 100% responsive and optimized for small touch screens.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Google Fonts</h3>
+                <p class="fs-md mb-0">Around uses Google fonts which are free, fast to load and of very high quality. Currently Google fonts library includes 900+ font families to choose from.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Touch-enabled Sliders</h3>
+                <p class="fs-md mb-0">In the era of touch screens it's important to ensure great user experience on handheld devices, especially when it comes to such frequently used interface component as slider.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Vector Based HD Ready Icons</h3>
+                <p class="fs-md mb-0">Around is equiped with font-based icon pack and svg icons to ensure that infographics and interface icons look sharp on any device with any screen resolution and pixel density.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">W3C Valid HTML Code</h3>
+                <p class="fs-md mb-0">All HTML files are checked via W3C validator to ensure 100% valid code. As you probably know invalid HTML limits innovation, but Around is innovative at its core.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Future-proof JavaScript</h3>
+                <p class="fs-md mb-0">Around core scripts as well as all dependencies are written in vanilla JS. The only component that requires jQuery is Bootstrap itself. But that will change soon. And whent this happens we will drop jQuery altogether.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Detailed Documentation</h3>
+                <p class="fs-md mb-0">Download package includes links to online documentation. It covers all crucial information about how to get started, customize template and components usage.</p>
+              </div>
+            </div>
+            <h3 class="h5">...and much more</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer bg-dark pt-5 pt-md-6">
+      <div class="container pt-3 pt-md-0">
+        <div class="row pb-3">
+          <div class="col-md-4 mt-n2 pb-3 pb-md-0 mb-4"><a class="d-block mb-3" href="index-2.html" style="width: 153px;text-decoration: none;font-size: xx-large">StepSassAutomation</a>
+            <p class="fs-sm text-light opacity-60 pb-2 pb-sm-3">Highly customizable and modular official multipurpose Bootstrap template and UI kit.</p><a class="btn-social bs-outline bs-facebook bs-light bs-lg me-2 mb-2" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-outline bs-twitter bs-light bs-lg me-2 mb-2" href="#"><i class="ai-twitter"></i></a><a class="btn-social bs-outline bs-instagram bs-light bs-lg me-2 mb-2" href="#"><i class="ai-instagram"></i></a><a class="btn-social bs-outline bs-google bs-light bs-lg me-2 mb-2" href="#"><i class="ai-google"></i></a>
+          </div>
+          <div class="col-md-2 col-sm-4 ms-auto pb-1 mb-4">
+            <div class="widget widget-light">
+              <h4 class="widget-title">Company</h4>
+              <ul>
+                <li><a class="widget-link" href="#">About</a></li>
+                <li><a class="widget-link" href="#">Careers</a></li>
+                <li><a class="widget-link" href="#">Press</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="my-0 border-light">
+        <div class="row align-items-center mt-3 py-4">
+          <div class="col-md-6 order-md-2 text-md-end mb-3">
+            <ul class="list-inline fs-sm mb-0">
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Support</a></li>
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Contacts</a></li>
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 order-md-1 mb-3">
+            <p class="fs-sm mb-0"><span class="text-light opacity-50 me-1">© All rights reserved. Made by</span><a class="nav-link-style nav-link-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/simplebar/dist/simplebar.min.js' %}"></script>
+    <script src="{% static 'vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js' %}"></script>
+    <script src="{% static 'vendor/parallax-js/dist/parallax.min.js' %}"></script>
+    <!-- Main theme script-->
+    <script src="{% static 'js/theme.min.js' %}"></script>
+  </body>
+
+<!-- Mirrored from around.createx.studio/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:10:56 GMT -->
+</html>

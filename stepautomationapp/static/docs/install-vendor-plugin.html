@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from around.createx.studio/docs/install-vendor-plugin.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:21:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Around | Installing Vendor plugins with npm and Gulp</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="mask-icon" color="#5bbad5" href="../safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="../vendor/simplebar/dist/simplebar.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../css/theme.min.css">
+    <!-- Google Tag Manager-->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WKV3GT5');
+    </script>
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <main class="container-fluid">
+      <!-- Main content-->
+      <section class="offcanvas-enabled row pb-3 pb-md-4">
+        <div class="col-xxl-9">
+          <!-- Navbar-->
+          <header class="navbar navbar-expand-lg navbar-light fixed-top navbar-shadow bg-light px-3 px-lg-4" data-scroll-header data-fixed-element><a class="navbar-brand d-lg-none flex-shrink-0" href="dev-setup.html"><img src="../img/logo/logo-icon.png" alt="Around" width="58"></a>
+            <button class="navbar-toggler d-block d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#docsNav"><span class="navbar-toggler-icon"></span></button>
+            <ul class="navbar-nav ms-auto d-none d-lg-flex">
+              <li class="nav-item"><a class="nav-link" href="../index-2.html"><i class="ai-eye align-middle mt-n1 me-2"></i>Live preview</a></li>
+              <li class="nav-item">
+                <div class="nav-link disabled text-border px-1">|</div>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="../components/typography.html"><i class="ai-layers align-middle mt-n1 me-2"></i>Components</a></li>
+              <li class="nav-item">
+                <div class="nav-link disabled text-border px-1">|</div>
+              </li>
+            </ul><a class="btn btn-primary btn-shadow ms-lg-4" href="https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/" target="_blank" rel="noopener"><i class="ai-shopping-cart me-2 d-none d-sm-inline-block"></i>Buy now</a>
+          </header>
+          <!-- Side navigation (Off-canvas)-->
+          <aside class="offcanvas offcanvas-expand bg-dark" id="docsNav">
+            <div class="offcanvas-cap bg-darker d-none d-lg-block py-2"><a class="navbar-brand py-1 flex-shrink-0" href="dev-setup.html"><img src="../img/logo/logo-light.png" alt="Around" width="153"></a><span class="badge bg-info">Docs</span></div>
+            <div class="offcanvas-cap bg-darker d-flex d-lg-none">
+              <div class="d-flex align-items-center mt-1">
+                <h5 class="text-light mb-0 me-3">Menu</h5><span class="badge bg-info">Docs</span>
+              </div>
+              <button class="btn-close btn-close-white" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="d-flex d-lg-none align-items-center py-4 px-3 border-bottom border-light"><a class="btn btn-outline-light w-100 btn-sm me-2" href="../index-2.html"><i class="ai-eye me-2"></i>Preview</a><a class="btn btn-outline-light w-100 btn-sm mt-0" href="../components/typography.html"><i class="ai-layers me-2"></i>Components</a></div>
+            <div class="offcanvas-body pt-4 pb-grid-gutter" data-simplebar data-simplebar-inverse>
+              <h6 class="text-light pt-2 pb-2 border-bottom border-light">Contents</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="dev-setup.html">Dev environment setup</a><a class="nav-link fs-sm" href="working-with-gulp.html">Working with Gulp</a><a class="nav-link fs-sm" href="project-structure.html">Project structure</a><a class="nav-link fs-sm active" href="install-vendor-plugin.html">Installing Vendor plugins with npm and Gulp</a><a class="nav-link fs-sm" href="using-preprocessors.html">Using Pug &amp; Sass</a><a class="nav-link fs-sm" href="autoprefixer.html">Browser support</a><a class="nav-link fs-sm" href="global-colors.html">Global colors</a><a class="nav-link fs-sm" href="components.html">Components</a><a class="nav-link fs-sm" href="navbar-footer.html">Navbar / Footer variants (Pug)</a><a class="nav-link fs-sm" href="utilities.html">Utility classes</a><a class="nav-link fs-sm" href="ui-icons.html">UI icons (Icon font)</a><a class="nav-link fs-sm" href="mailchimp.html">Mailchimp subscription form</a><a class="nav-link fs-sm" href="credits.html">Sources and credits</a><a class="nav-link fs-sm" href="changelog.html">Changelog</a></nav>
+            </div>
+          </aside>
+          <!-- Page title-->
+          <div class="border-bottom pt-5 pb-2 mt-2 mb-5">
+            <h1 class="mt-lg-4 pt-5">Installing Vendor plugins with npm and Gulp</h1>
+          </div>
+          <div class="pb-5">
+            <h2 class="h5">Follow this 4 easy steps to install 3rd party plugin and use it in your Around based project:</h2>
+            <ol class="mb-5">
+              <li>Open your Terminal window and navigate to the root directory of your project (where you package.json file is located).</li>
+              <li>Run <kbd>npm install &lt;package name&gt; --save</kbd>. This command does two things: downloads package to <code>node_modules</code> folder and writes dependency to your <code>package.json</code> file inside <code>dependencies object</code>.</li>
+              <li>Run <kbd>gulp vendor</kbd>. This command will clean <code>dist/vendor</code> folder and move all the dpendencies that are listed in <code>package.json</code> file in <code>dependencies object</code> to <code>dist/vendor</code> including your newly downloaded plugins.</li>
+              <li>And last step is to link to plugin's scripts and styles in your document. If you use Pug templates you can link to plugin using array of dependencies. See the screenshot below:</li>
+            </ol><img src="../img/docs/vendor-plugin.png" alt="Link to vendor plugins in Pug template">
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="../js/theme.min.js"></script>
+  </body>
+
+<!-- Mirrored from around.createx.studio/docs/install-vendor-plugin.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:21:24 GMT -->
+</html>
