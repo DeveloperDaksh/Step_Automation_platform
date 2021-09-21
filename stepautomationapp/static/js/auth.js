@@ -13,14 +13,10 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-console.log(window.location.origin)
 $(document).ready(function (){
     $("#submitb").click(function (event){
         event.preventDefault()
-        const first_name = $("#first_name").val();
-        const last_name = $("#last_name").val();
         const email = $("#email").val();
-        const username = $("#username").val();
         const password = $("#password").val();
         const cpassword = $("#cpassword").val();
         if(cpassword!==password){
@@ -29,24 +25,25 @@ $(document).ready(function (){
         }
         else {
             const data={
-                'first_name':first_name,
-                'last_name':last_name,
-                'username':username,
                 'email':email,
                 'password':password
             }
             $.ajaxSetup(
             {
-                headers : {"X-CSRFToken":getCookie('csrftoken')}
+                headers : {"X-CSRFToken":getCookie('csrftoken')},
             })
+            console.log("Hello")
+            $('#loader2').removeClass('hidden')
             $.post('/signup',data,function (result){
+                $('#loader2').addClass('hidden')
                 if(result.status_msg==='Ok'){
                     document.getElementById("password").value="";
                     document.getElementById("cpassword").value="";
                     document.getElementById("register-message").innerText=result.msg;
                     document.getElementById("register-message").style.color="#2fc457";
+                    window.location.href=window.location.origin+"/steps"
                 }
-                if(result.status_msg==='NotOk'){
+                else {
                     document.getElementById("password").value="";
                     document.getElementById("cpassword").value="";
                     document.getElementById("register-message").innerText=result.msg;
@@ -78,15 +75,17 @@ $(document).ready(function (){
                 headers : {"X-CSRFToken":getCookie('csrftoken')}
             }
         )
+        $('#loader1').removeClass('hidden')
         $.post('/signin',logindata,function (result){
-            if(result.status_msg==='NotOk'){
+            $('#loader1').addClass('hidden')
+            if(result.status_msg==='Ok'){
+                document.getElementById("passwordl").value="";
+                window.location.href=window.location.origin+"/steps";
+            }
+            else {
                 document.getElementById("passwordl").value="";
                 document.getElementById("login-msg").innerText=result.msg;
                 document.getElementById("register-message").style.color="red";
-            }
-            if(result.status_msg==='Ok'){
-                document.getElementById("passwordl").value="";
-                window.location.href=window.location.origin+"/"+result.authKey+"/account-profile";
             }
         });
     });

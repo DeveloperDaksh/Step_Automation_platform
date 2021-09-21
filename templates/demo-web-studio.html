@@ -18,6 +18,12 @@
     <link rel="mask-icon" color="#5bbad5" href="{% static 'safari-pinned-tab.svg' %}">
     <meta name="msapplication-TileColor" content="#766df4">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstarp.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" media="screen" href="{% static 'css/spinnerstyle.css' %}">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="{% static 'js/auth.js' %}"></script>
     <!-- Page loading styles-->
@@ -87,7 +93,7 @@
           transform: rotate(360deg);
         }
       }
-      
+
     </style>
     <!-- Page loading scripts-->
     <script>
@@ -100,7 +106,7 @@
           }, 2000);
         };
       })();
-      
+
     </script>
     <!-- Vendor Styles-->
     <link rel="stylesheet" media="screen" href="{% static 'vendor/simplebar/dist/simplebar.min.css' %}"/>
@@ -141,11 +147,12 @@
               <div class="modal-body px-4">
                 <p class="fs-ms text-muted">Sign in to your account using email and password provided during registration.</p>
                 <p id="login-msg"></p>
+                <div id="loader1" class="lds-dual-ring hidden overlay" style="width:100%;height: 100%"></div>
                 <form class="needs-validation" novalidate action="signin" method="post">
                   {% csrf_token %}
                   <div class="mb-3">
                     <div class="input-group"><i class="ai-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                      <input class="form-control rounded" type="text" placeholder="Email or Username" name="email" id="emaill" autocomplete="false" required>
+                      <input class="form-control rounded" type="email" placeholder="Email" name="email" id="emaill" autocomplete="false" required>
                     </div>
                   </div>
                   <div class="mb-3">
@@ -177,19 +184,11 @@
               <div class="modal-body px-4">
                 <p class="fs-ms text-muted">Registration takes less than a minute but gives you full control over your orders.</p>
                   <p id="register-message"></p>
+                <div id="loader2" class="lds-dual-ring hidden overlay" style="width:100%;height: 100%"></div>
                 <form class="needs-validation" novalidate method="post">
                   {% csrf_token %}
                   <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Fist Name" name="first_name" id="first_name" required>
-                  </div>
-                  <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Last name" name="last_name" id="last_name" required>
-                  </div>
-                  <div class="mb-3">
                     <input class="form-control" type="text" placeholder="Email" name="email" id="email" required>
-                  </div>
-                  <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Username" name="username" id="username" required>
                   </div>
                   <div class="mb-3 password-toggle">
                     <input class="form-control" type="password" placeholder="Password" name="password" id="password" required>
@@ -215,7 +214,7 @@
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
       <header class="header navbar navbar-expand-lg navbar-dark navbar-floating navbar-sticky" data-scroll-header data-fixed-element>
         <div class="container px-0 px-xl-3">
-          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index-2.html">StepSaasAutomation</a>
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="/">StepSaasAutomation</a>
           <div class="d-flex align-items-center order-lg-3 ms-lg-auto"><a class="nav-link-style fs-sm text-nowrap" href="#modal-signin" data-bs-toggle="modal" data-view="#modal-signin-view"><i class="ai-user fs-xl me-2 align-middle"></i>Sign in</a><a class="btn btn-primary ms-grid-gutter d-none d-lg-inline-block navbar-btn" href="#modal-signin" data-bs-toggle="modal" data-view="#modal-signup-view">Sign up</a><a class="btn btn-primary ms-grid-gutter d-none d-lg-inline-block navbar-stuck-btn" href="#modal-signin" data-bs-toggle="modal" data-view="#modal-signup-view">Sign up</a></div>
           <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
             <div class="offcanvas-cap navbar-shadow">
@@ -249,238 +248,98 @@
           </svg>
         </div>
         <!-- Text-->
-        <div class="container position-relative zindex-5 text-center pt-6 pt-lg-7">
-          <h2 class="fs-xl fw-normal text-light">Award winning web design agency</h2>
-          <h1 class="text-light">Get your website done</h1>
-        </div>
         <div class="d-block d-sm-none" style="height: 100px;"></div>
         <div class="d-none d-sm-block d-lg-none" style="height: 300px;"></div>
         <div class="d-none d-lg-block" style="height: 400px;"></div>
       </section>
+
       <!-- Featured Projects (carousel)-->
-      <section class="container position-relative zindex-5">
-        <div class="d-block d-sm-none" style="margin-top: -160px;"></div>
-        <div class="d-none d-sm-block d-lg-none" style="margin-top: -360px;"></div>
-        <div class="d-none d-lg-block" style="margin-top: -450px;"></div>
-        <div class="frame-browser border-light tns-carousel-wrapper mx-auto" style="max-width: 915px;">
-          <div class="frame-browser-toolbar">
-            <div class="text-nowrap me-3"><span class="frame-browser-button bg-danger"></span><span class="frame-browser-button bg-warning"></span><span class="frame-browser-button bg-success"></span></div><span class="tns-carousel-label fs-sm text-light opacity-75">https://mobileapp.com</span>
-          </div>
-          <div class="frame-browser-body">
+      <div class="container position-relative zindex-5">
+        <div class="d-block d-sm-none" style="margin-top: -160px;" >
+        </div>
+        <div class="d-none d-sm-block d-lg-none" style="margin-top: -300px;"></div>
+        <div class="d-none d-lg-block" style="margin-top: -500px;"></div>
+        <div class="jumbotron jumbotron-fluid" style="height:350px;background: none">
+          <div>
             <div class="tns-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;controls&quot;: false, &quot;nav&quot;: false, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 6000}">
-              <div data-carousel-label="https://mobileapp.com/"><img class="rounded" src="{% static 'img/demo/web-studio/slider/01.jpg' %}" alt="Screenshot"></div>
-              <div data-carousel-label="https://bookingapp.com/"><img class="rounded" src="{% static 'img/demo/web-studio/slider/02.jpg' %}" alt="Screenshot"></div>
-              <div data-carousel-label="https://creativeagency.com/"><img class="rounded" src="{% static 'img/demo/web-studio/slider/03.jpg' %}" alt="Screenshot"></div>
-            </div>
-          </div>
-          <div class="tns-carousel-pager pt-4 text-nowrap text-center mt-2 mb-n2">
-            <button class="active" data-nav data-goto="1"></button>
-            <button data-nav data-goto="2"></button>
-            <button data-nav data-goto="3"></button>
-          </div>
-        </div>
-      </section>
-      <!-- Services-->
-      <section class="container pt-5 pt-lg-6">
-        <h2 class="text-center">What we offer</h2>
-        <p class="text-center text-muted mb-0">We provide wide range of services in web design and development</p>
-        <!-- RWD Service-->
-        <div class="row align-items-center border-bottom py-5">
-          <div class="col-md-6 py-3"><img class="d-block mx-auto" src="{% static 'img/demo/web-studio/services/01.svg' %}" alt="Responsive Web Design"></div>
-          <div class="col-xl-4 col-lg-5 col-md-6 offset-lg-1 py-3">
-            <h3 class="h4 mb-4">Responsive Web Design</h3>
-            <ul class="list-unstyled">
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Gathering user data, creating user flow chart, building wireframes</span></li>
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Website UI / UX design for desktop and handheld devices</span></li>
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Converting design mockups into responsive HTML based websites</span></li>
-            </ul>
-            <h4 class="h6 pt-2 mb-1">Tools and technologies:</h4>
-            <p class="pb-1">Sketch, Figma, Photoshop, HTML, CSS, JS</p><a class="fw-medium" href="#">Get a quote<i class="ai-chevron-right fs-xl ms-1 align-middle"></i></a>
-          </div>
-        </div>
-        <!-- Web Dev Service-->
-        <div class="row align-items-center border-bottom py-5">
-          <div class="col-md-6 offset-lg-1 py-3 order-md-2"><img class="d-block mx-auto" src="{% static 'img/demo/web-studio/services/02.svg' %}" alt="Web Development"></div>
-          <div class="col-xl-4 col-lg-5 col-md-6 offset-xl-1 py-3 order-md-1">
-            <h3 class="h4 mb-4">Web Development (Software)</h3>
-            <ul class="list-unstyled">
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Building dynamic webstise and web applications with latest technologies</span></li>
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Front-end and Back-end development</span></li>
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Integration with popular CMS (WordPress, Drupal, Joomla)</span></li>
-            </ul>
-            <h4 class="h6 pt-2 mb-1">Tools and technologies:</h4>
-            <p class="pb-1">PHP, Node.js, SQL, React.js, Vue.js, GraphQL</p><a class="fw-medium" href="#">Get a quote<i class="ai-chevron-right fs-xl ms-1 align-middle"></i></a>
-          </div>
-        </div>
-        <!-- Mobile Dev Service-->
-        <div class="row align-items-center border-bottom py-5">
-          <div class="col-md-6 py-3"><img class="d-block mx-auto" src="{% static 'img/demo/web-studio/services/03.svg' %}" alt="Mobile Apps Development"></div>
-          <div class="col-xl-4 col-lg-5 col-md-6 offset-lg-1 py-3">
-            <h3 class="h4 mb-4">Mobile Apps Development</h3>
-            <ul class="list-unstyled">
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Mobile apps UI design</span></li>
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Hybrid mobile apps development</span></li>
-              <li class="d-flex mb-2 pb-1"><i class="ai-check-circle text-success fs-xl mt-1 me-3"></i><span>Native mobile apps development</span></li>
-            </ul>
-            <h4 class="h6 pt-2 mb-1">Tools and technologies:</h4>
-            <p class="pb-1">React native, Flutter, Java, Swift</p><a class="fw-medium" href="#">Get a quote<i class="ai-chevron-right fs-xl ms-1 align-middle"></i></a>
-          </div>
-        </div>
-      </section>
-      <!-- Portfolio-->
-      <section class="container overflow-hidden pt-5 pt-md-6 pt-lg-7 pb-4 pb-md-2">
-        <h2 class="text-center pt-4 pt-md-0">Our work</h2>
-        <p class="text-center text-muted pb-4">Most recent projects we have completed</p>
-        <div class="masonry-filterable mb-3">
-          <!-- Portfolio nav (Filters)-->
-          <ul class="masonry-filters nav nav-tabs justify-content-center pb-4">
-            <li class="nav-item"><a class="nav-link active" href="#" data-group="all">All</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-group="web">Web</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-group="mobile">Mobile</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-group="identity">Identity</a></li>
-          </ul>
-          <!-- Portfolio grid-->
-          <div class="masonry-grid" data-columns="3">
-            <div class="masonry-grid-item" data-groups="[&quot;web&quot;]"><a class="card card-hover border-0 shadow" href="portfolio-single-carousel.html"><img class="card-img-top" src="{% static 'img/portfolio/01.jpg' %}" alt="Portfolio thumb">
-                <div class="card-body text-center">
-                  <h3 class="h5 nav-heading mb-2">Landing Page Design</h3>
-                  <p class="fs-sm text-muted mb-2">UI / UX Design, Web Development</p>
-                </div></a></div>
-            <div class="masonry-grid-item" data-groups="[&quot;web&quot;]"><a class="card card-hover border-0 shadow" href="portfolio-single-carousel.html"><img class="card-img-top" src="{% static 'img/portfolio/02.jpg' %}" alt="Portfolio thumb">
-                <div class="card-body text-center">
-                  <h3 class="h5 nav-heading mb-2">Corporate Website Design</h3>
-                  <p class="fs-sm text-muted mb-2">Web Design</p>
-                </div></a></div>
-            <div class="masonry-grid-item" data-groups="[&quot;identity&quot;]"><a class="card card-hover border-0 shadow" href="portfolio-single-carousel.html"><img class="card-img-top" src="{% static 'img/portfolio/03.jpg' %}" alt="Portfolio thumb">
-                <div class="card-body text-center">
-                  <h3 class="h5 nav-heading mb-2">Surfing Portal Logo Design</h3>
-                  <p class="fs-sm text-muted mb-2">Identity Design</p>
-                </div></a></div>
-            <div class="masonry-grid-item" data-groups="[&quot;web&quot;]"><a class="card card-hover border-0 shadow" href="portfolio-single-carousel.html"><img class="card-img-top" src="{% static 'img/portfolio/04.jpg' %}" alt="Portfolio thumb">
-                <div class="card-body text-center">
-                  <h3 class="h5 nav-heading mb-2">Cartzilla - Fashion Store</h3>
-                  <p class="fs-sm text-muted mb-2">E-commerce Development</p>
-                </div></a></div>
-            <div class="masonry-grid-item" data-groups="[&quot;mobile&quot;]"><a class="card card-hover border-0 shadow" href="portfolio-single-carousel.html"><img class="card-img-top" src="{% static 'img/portfolio/05.jpg' %}" alt="Portfolio thumb">
-                <div class="card-body text-center">
-                  <h3 class="h5 nav-heading mb-2">Mobile App Icon Design</h3>
-                  <p class="fs-sm text-muted mb-2">Mobile App Design</p>
-                </div></a></div>
-            <div class="masonry-grid-item" data-groups="[&quot;web&quot;]"><a class="card card-hover border-0 shadow" href="portfolio-single-carousel.html"><img class="card-img-top" src="{% static 'img/portfolio/06.jpg' %}" alt="Portfolio thumb">
-                <div class="card-body text-center">
-                  <h3 class="h5 nav-heading mb-2">Auto Reseller Website</h3>
-                  <p class="fs-sm text-muted mb-2">UI / UX Design, Web Development</p>
-                </div></a></div>
-          </div>
-        </div>
-        <div class="text-center"><a class="btn btn-primary" href="#">See More Projects</a></div>
-      </section>
-      <!-- Testimonials-->
-      <section class="bg-secondary mt-5 mt-md-6 mt-lg-7">
-        <div class="container py-5 py-md-6 py-lg-7">
-          <div class="row tns-carousel-wrapper py-3 py-md-0">
-            <div class="col-md-8">
-              <h2 class="pb-2 mb-4 text-center text-md-start">Testimonials</h2>
-              <div class="tns-carousel-inner" data-carousel-options="{&quot;nav&quot;: false, &quot;gutter&quot;: 20}">
-                <blockquote class="blockquote mt-3 mb-0">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
-                  <p>Mattis enim ut tellus elementum sagittis vitae et leo duis.</p>
-                  <footer class="d-flex align-items-center"><img class="rounded-circle" src="{% static 'img/testimonials/01.jpg' %}" alt="Emma Brown" width="42">
-                    <div class="text-heading fs-md fw-medium ps-2 ms-1">Emma Brown</div>
-                  </footer>
-                </blockquote>
-                <blockquote class="blockquote mt-3 mb-0">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
-                  <p>Mattis enim ut tellus elementum sagittis vitae et leo duis.</p>
-                  <footer class="d-flex align-items-center"><img class="rounded-circle" src="{% static 'img/testimonials/03.jpg' %}" alt="Tim Brooks" width="42">
-                    <div class="text-heading fs-md fw-medium ps-2 ms-1">Tim Brooks</div>
-                  </footer>
-                </blockquote>
-                <blockquote class="blockquote mt-3 mb-0">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
-                  <p>Mattis enim ut tellus elementum sagittis vitae et leo duis.</p>
-                  <footer class="d-flex align-items-center"><img class="rounded-circle" src="{% static 'img/testimonials/02.jpg' %}" alt="Sanomi Smith" width="42">
-                    <div class="text-heading fs-md fw-medium ps-2 ms-1">Sanomi Smith</div>
-                  </footer>
-                </blockquote>
-                <blockquote class="blockquote mt-3 mb-0">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
-                  <p>Mattis enim ut tellus elementum sagittis vitae et leo duis.</p>
-                  <footer class="d-flex align-items-center"><img class="rounded-circle" src="{% static 'img/testimonials/04.jpg' %}" alt="Charlie Welch" width="42">
-                    <div class="text-heading fs-md fw-medium ps-2 ms-1">Charlie Welch</div>
-                  </footer>
-                </blockquote>
-                <blockquote class="blockquote mt-3 mb-0">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
-                  <p>Mattis enim ut tellus elementum sagittis vitae et leo duis.</p>
-                  <footer class="d-flex align-items-center"><img class="rounded-circle" src="{% static 'img/testimonials/05.jpg' %}" alt="Sarah Palson" width="42">
-                    <div class="text-heading fs-md fw-medium ps-2 ms-1">Sarah Palson</div>
-                  </footer>
-                </blockquote>
+              <div class="intro-text" style="padding-left: 300px">
+                  <div class="intro-heading text-uppercase" style="margin:auto;">&nbsp;&nbsp;&nbsp;<h1><b style="color: white">SIMPLIFY THE PROCESS</b></h1></div>
+                <div class="intro-lead-in"><span><br><h3><b style="color: white">One-stop, step-by-step process instructions for your client</b></h3><br><br></span></div>&nbsp;&nbsp;&nbsp;<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" role="button" href="#">FREE FOR 15-DAYS</a>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 offset-lg-1">
-              <div class="tns-carousel-pager d-flex flex-wrap flex-md-column justify-content-center align-items-center align-items-md-start border-start pt-4 mt-4 ps-md-3 pt-md-0 mt-md-0"><a class="swap-image active mx-4 my-3 my-md-4" href="#" data-goto="1"><img class="swap-to" src="{% static 'img/demo/gadget-landing/logos/01_color.png' %}" alt="Logo" width="136"><img class="swap-from" src="{% static 'img/demo/gadget-landing/logos/01_gray.png' %}" alt="Logo" width="136"></a><a class="swap-image mx-4 my-3 my-md-4" href="#" data-goto="2"><img class="swap-to" src="{% static 'img/demo/gadget-landing/logos/02_color.png' %}" alt="Logo" width="130"><img class="swap-from" src="{% static 'img/demo/gadget-landing/logos/02_gray.png' %}" alt="Logo" width="130"></a><a class="swap-image mx-4 my-3 my-md-4" href="#" data-goto="3"><img class="swap-to" src="{% static 'img/demo/gadget-landing/logos/05_color.png' %}" alt="Logo" width="114"><img class="swap-from" src="{% static 'img/demo/gadget-landing/logos/05_gray.png' %}" alt="Logo" width="114"></a><a class="swap-image mx-4 my-3 my-md-4" href="#" data-goto="4"><img class="swap-to" src="{% static 'img/demo/gadget-landing/logos/03_color.png' %}" alt="Logo" width="103"><img class="swap-from" src="{% static 'img/demo/gadget-landing/logos/03_gray.png' %}" alt="Logo" width="103"></a><a class="swap-image mx-4 my-3 my-md-4" href="#" data-goto="5"><img class="swap-to" src="{% static 'img/demo/gadget-landing/logos/04_color.png' %}" alt="Logo" width="143"><img class="swap-from" src="{% static 'img/demo/gadget-landing/logos/04_gray.png' %}" alt="Logo" width="143"></a></div>
-            </div>
           </div>
         </div>
-      </section>
-      <!-- Blog-->
-      <section class="container py-5 py-md-6 py-lg-7 mb-4 mb-md-0">
-        <h2 class="mb-5 mt-3 mt-md-0 text-center">From the blog</h2>
-        <div class="tns-carousel-wrapper">
-          <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},&quot;850&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 23}}}">
-            <!-- Article-->
-            <div class="pb-2">
-              <article class="card card-hover h-100 pt-4 pb-5 mx-1"><span class="badge badge-lg badge-floating badge-floating-end bg-success">New</span>
-                <div class="card-body pt-5 px-4 px-xl-5"><a class="meta-link fs-sm mb-2" href="#">Identity design</a>
-                  <h3 class="h4 nav-heading mb-4"><a href="#">Top 5 Secrets of Making Successful Corporate Identity Design</a></h3>
+      </div>
+      <!-- Services-->
+      <section id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">FEATURES</h2>
+                    <h3 class="text-muted section-subheading">StepGuide was designed to be simple. Many systems today are complex and try to do too much. To appreciate the simplicity, create a free account and build your own StepGuide in minutes. No credit card needed, free trial for 15 days.</h3>
                 </div>
-                <div class="px-4 px-xl-5 pt-2"><a class="d-flex meta-link fs-sm align-items-center" href="#"><img class="rounded-circle" src="{% static 'img/testimonials/02.jpg' %}" alt="Sanomi Smith" width="42">
-                    <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Sanomi Smith</span></div></a>
-                  <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Feb 12</a></div>
-                </div>
-              </article>
             </div>
-            <!-- Article-->
-            <div class="pb-2">
-              <article class="card card-hover h-100 pt-4 pb-5 mx-1">
-                <div class="card-body pt-5 px-4 px-xl-5"><a class="meta-link fs-sm mb-2" href="#">CMS</a>
-                  <h3 class="h4 nav-heading mb-4"><a href="#">List of Excellent Learning Management Systems</a></h3>
+            <div class="row text-center">
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-hand-stop-o fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">1 Stop</h4>
+                    <p class="text-muted">Imagine your entire process in one collaboration platform, eliminating the need for unorganized paperwork &amp; multi-stream communications via phone, texts, emails, meetings, etc.<br><br></p>
                 </div>
-                <div class="px-4 px-xl-5 pt-2"><a class="d-flex meta-link fs-sm align-items-center" href="#"><img class="rounded-circle" src="{% static 'img/testimonials/03.jpg' %}" alt="Tim Brooks" width="42">
-                    <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Tim Brooks</span></div></a>
-                  <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Jan 27</a></div>
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fas fa-list-ol fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Step by Step</h4>
+                    <p class="text-muted">Create process templates (StepGuides) that contain clear step-by-step instructions in bite-size chunks. Then you can copy your template to create a personal StepGuide for your client to follow, and you can modify anytime along the way.<br><br></p>
                 </div>
-              </article>
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-copy fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Revision Control</h4>
+                    <p class="text-muted">Standardize, manage and track your documents, forms, licenses, accredidations, etc, to ensure that your client always has the latest version.<br><br></p>
+                </div>
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-laptop fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Progress Dashboard</h4>
+                    <p class="text-muted">Start your day with a simple real-time overview of all StepGuides. &nbsp;See where your clients are stuck. See the steps that are awaiting your action.<br><br></p>
+                </div>
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-lock fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Encrypted Data</h4>
+                    <p class="text-muted">Emailing confidential documents is not safe. The StepGuide platform allows uploads via a secure HTTPS connection. Documents are stored in our encryped database, powered by Google Cloud.<br><br></p>
+                </div>
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-dollar fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Simple Pricing</h4>
+                    <p class="text-muted">No credit card necessary to sign up. Instant 15-day free access to get a feel for the platform. After 15 days, you pay only when you invite your client(s) to their personal StepGuide. See sample pricing.<br></p>
+                </div>
             </div>
-            <!-- Article-->
-            <div class="pb-2">
-              <article class="card card-hover h-100 pt-4 pb-5 mx-1">
-                <div class="card-body pt-5 px-4 px-xl-5"><a class="meta-link fs-sm mb-2" href="#">Web development</a>
-                  <h3 class="h4 nav-heading mb-4"><a href="#">Build Complete Websites in a Fraction of Time With This Handy Tool</a></h3>
-                </div>
-                <div class="px-4 px-xl-5 pt-2"><a class="d-flex meta-link fs-sm align-items-center" href="#"><img class="rounded-circle" src="{% static 'img/testimonials/04.jpg' %}" alt="Charlie Welch" width="42">
-                    <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Charlie Welch</span></div></a>
-                  <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Jan 15</a></div>
-                </div>
-              </article>
-            </div>
-            <!-- Article-->
-            <div class="pb-2">
-              <article class="card card-hover h-100 pt-4 pb-5 mx-1">
-                <div class="card-body pt-5 px-4 px-xl-5"><a class="meta-link fs-sm mb-2" href="#">Project management</a>
-                  <h3 class="h4 nav-heading mb-4"><a href="#">What You Can Learn About Managing Projects</a></h3>
-                </div>
-                <div class="px-4 px-xl-5 pt-2"><a class="d-flex meta-link fs-sm align-items-center" href="#"><img class="rounded-circle" src="{% static 'img/testimonials/07.jpg' %}" alt="Sarah Palson" width="42">
-                    <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Sarah Palson</span></div></a>
-                  <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Dec 19</a></div>
-                </div>
-              </article>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
+      <!-- Testimonials-->
+      <section id="contact" style="background-image:url({% static '/img/map-image.png' %});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">Contact Us</h2>
+                    <h3 class="section-subheading text-muted">Contact us, we are excited to hear from you!</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form id="contactForm" name="contactForm" novalidate="novalidate">
+                        <div class="form-row">
+                            <div class="col col-md-6">
+                                <div class="form-group"><input class="form-control" type="text" id="name" placeholder="Your Name *" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
+                                <div class="form-group"><input class="form-control" type="email" id="emailf" placeholder="Your Email *" required=""><small class="form-text text-danger help-block lead"></small></div>
+                                <div class="form-group"><input class="form-control" type="tel" placeholder="Your Phone *" required=""><small class="form-text text-danger help-block lead"></small></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group"><textarea class="form-control" id="message" placeholder="Your Message *" required=""></textarea><small class="form-text text-danger help-block lead"></small></div>
+                            </div>
+                            <div class="col">
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
     </main>
     <!-- Footer-->
     <footer class="footer bg-dark pt-5 pt-md-6">

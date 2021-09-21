@@ -3,9 +3,7 @@ from pathlib import Path
 import os
 from decouple import config, Csv
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 SECRET_KEY = config('SECRET_KEY', default=string.ascii_letters)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
@@ -20,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'stepautomationapp.apps.StepautomationappConfig',
+    'userforms.apps.UserformsConfig',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -49,6 +48,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -110,6 +110,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'stepautomationapp/static'),
 )
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+FILE_UPLOAD_HANDLERS = ["django.core.files.uploadhandler.MemoryFileUploadHandler",
+                        "django.core.files.uploadhandler.TemporaryFileUploadHandler"]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

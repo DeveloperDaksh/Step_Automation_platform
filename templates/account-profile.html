@@ -6,7 +6,7 @@
 <head>
     {% load static %}
     <meta charset="utf-8">
-    <title>Around | Account - Profile</title>
+    <title>StepSaasAutomation</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Around - Multipurpose Bootstrap Template">
     <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
@@ -18,6 +18,9 @@
     <link rel="mask-icon" color="#5bbad5" href="{% static 'safari-pinned-tab.svg' %}">
     <meta name="msapplication-TileColor" content="#766df4">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" media="screen" href="{% static 'css/spinnerstyle.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'js/citystate.js' %}"></script>
     <!-- Page loading styles-->
     <style>
       .page-loading {
@@ -116,7 +119,6 @@
   </head>
   <!-- Body-->
   <body style="background-color:#f7f7fc;">
-  {% if logged %}
     <!-- Google Tag Manager (noscript)-->
     <noscript>
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
@@ -134,9 +136,9 @@
         <div class="container px-0 px-xl-3">
           <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index-2.html">StepSaasAutomation</a>
           <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
-            <div class="navbar-tool dropdown"><a class="navbar-tool-icon-box" href="account-profile.html"><img class="navbar-tool-icon-box-img" src="{% static 'img/dashboard/avatar/main-sm.jpg' %}" alt="Avatar"></a><a class="navbar-tool-label dropdown-toggle" href="account-profile.html"><small>Hello,</small>Amanda</a>
+            <div class="navbar-tool dropdown"><a class="navbar-tool-icon-box" href="account-profile.html"><img class="navbar-tool-icon-box-img" src={{profilepic}} alt="Avatar"></a><a class="navbar-tool-label dropdown-toggle" href="account-profile"><small>Hello,</small>{{username}}</a>
               <ul class="dropdown-menu dropdown-menu-end" style="width: 15rem;">
-                <li><a class="dropdown-item d-flex align-items-center" style="color: crimson" href="logout"><i class="ai-log-out fs-base opacity-60 me-2"></i>Sign out</a></li>
+                <li><a class="dropdown-item d-flex align-items-center" style="color: crimson" href="/logout"><i class="ai-log-out fs-base opacity-60 me-2"></i>Sign out</a></li>
               </ul>
             </div>
           </div>
@@ -164,14 +166,19 @@
           <!-- Sidebar-->
           <div class="col-lg-4 mb-4 mb-lg-0">
             <div class="bg-light rounded-3 shadow-lg">
-              <div class="px-4 py-4 mb-1 text-center"><img class="d-block rounded-circle mx-auto my-2" src="{% static 'img/dashboard/avatar/main.jpg' %}" at="Amanda Wilson" width="110">
-                <h6 class="mb-0 pt-1">Amanda Wilson</h6><span class="text-muted fs-sm">@amanda_w</span>
+              <div class="px-4 py-4 mb-1 text-center"><img class="d-block rounded-circle mx-auto my-2" src="{{profilepic}}" at="Amanda Wilson" width="110">
+                <h6 class="mb-0 pt-1">{{first_name}} {{last_name}}</h6><span class="text-muted fs-sm">{{username}}</span>
               </div>
               <div class="d-lg-none px-4 pb-4 text-center"><a class="btn btn-primary px-5 mb-2" href="#account-menu" data-bs-toggle="collapse"><i class="ai-menu me-2"></i>Account menu</a></div>
               <div class="d-lg-block collapse pb-2" id="account-menu">
-                <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">Account settings</h3><a class="d-flex align-items-center nav-link-style px-4 py-3 active" href="account-profile">Profile info</a>
-                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" style="color: crimson" href="logout"><i class="ai-log-out fs-lg opacity-60 me-2"></i>Sign out</a>
+                <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">Account settings</h3>
+                <a class="dropdown-item d-flex align-items-center nav-link-style" href="/account-profile">ProfileInfo</a>
+                <a class="dropdown-item d-flex align-items-center nav-link-style" href="/steps">Steps</a>
+                <a class="dropdown-item d-flex align-items-center nav-link-style" href="/forms">Create forms</a>
+                <a class="dropdown-item d-flex align-items-center nav-link-style" href="/forms/getforms">Forms</a>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" style="color: crimson" href="/logout"><i class="ai-log-out fs-lg opacity-60 me-2"></i>Sign out</a>
               </div>
+
             </div>
           </div>
           <!-- Content-->
@@ -180,89 +187,80 @@
               <div class="py-2 p-md-3">
                 <!-- Title + Delete link-->
                 <div class="d-sm-flex align-items-center justify-content-between pb-4 text-center text-sm-start">
-                  <h1 class="h3 mb-2 text-nowrap">Profile info</h1><a class="btn btn-link text-danger fw-medium btn-sm mb-2" href="#"><i class="ai-trash-2 fs-base me-2"></i>Delete account                        </a>
+                  <h1 class="h3 mb-2 text-nowrap">Profile info</h1><a class="btn btn-link text-danger fw-medium btn-sm mb-2" href="/deleteaccount"><i class="ai-trash-2 fs-base me-2"></i>Delete account                        </a>
                 </div>
                 <!-- Content-->
                 <div class="bg-secondary rounded-3 p-4 mb-4">
-                  <div class="d-block d-sm-flex align-items-center"><img class="d-block rounded-circle mx-sm-0 mx-auto mb-3 mb-sm-0" src="{% static 'img/dashboard/avatar/main.jpg' %}" alt="Amanda Wilson" width="110">
-                    <div class="ps-sm-3 text-center text-sm-start">
-                      <button class="btn btn-light shadow btn-sm mb-2" type="button"><i class="ai-refresh-cw me-2"></i>Change avatar</button>
-                      <div class="p mb-0 fs-ms text-muted">Upload JPG, GIF or PNG image. 300 x 300 required.</div>
+                  <form method="post" action="/updateprofilepic" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="d-block d-sm-flex align-items-center">
+                      <!--<img class="d-block rounded-circle mx-sm-0 mx-auto mb-3 mb-sm-0" src={{profilepic}} alt="Amanda Wilson" width="110">-->
+                      <label for="file-input">
+                        <img class="d-block rounded-circle mx-sm-0 mx-auto mb-3 mb-sm-0" src={{profilepic}} alt="Amanda Wilson" width="110" />
+                      </label>
+                      <input style="display: none;" id="file-input" type="file" accept="image/*" name="profilepic" required />
+                      <div class="ps-sm-3 text-center text-sm-start">
+                        <button class="btn btn-light shadow btn-sm mb-2" type="submit" id="profile-pic"><i class="ai-refresh-cw me-2"></i>Change avatar</button>
+                        <div class="p mb-0 fs-ms text-muted">Upload JPG, GIF or PNG image. 300 x 300 required.</div>
+                      </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="mb-3 pb-1">
-                      <label class="form-label px-0" for="account-fn">First Name</label>
-                      <input class="form-control" type="text" id="account-fn" value="Amanda">
+                <div>
+                  <div id="loaderprofile" class="lds-dual-ring hidden overlay" style="width: 100%;height: 100%"></div>
+                </div>
+                <span id="account-display-msg"></span>
+                <form method="post" action="updateprofile">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="mb-3 pb-1">
+                        <label class="form-label px-0" for="account-country">Country</label>
+                        <select class="form-select" id="account-country" name="country">
+                          <option value='Choose City'>Choose Country</option>
+                          {% if country %}
+                            <option>{{country}}</option>
+                          {% endif %}
+                          {% for country in countries %}
+                            <option value={{country.country}}>{{country.country}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3 pb-1">
-                      <label class="form-label px-0" for="account-ln">Last Name</label>
-                      <input class="form-control" type="text" id="account-ln" value="Wilson">
+                    <div class="col-sm-6">
+                      <div class="mb-3 pb-1">
+                        <label class="form-label px-0" for="account-city">City</label>
+                        <select class="form-select" id="account-city" name="city">
+                          {% if city %}
+                            <option>{{city}}</option>
+                          {% endif %}
+                        </select>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3 pb-1">
-                      <label class="form-label px-0" for="account-email">Email address</label>
-                      <input class="form-control" type="text" id="account-email" value="a.wilson@example.com">
+                    <div class="col-sm-6">
+                      <div class="mb-3 pb-1">
+                        <label class="form-label px-0" for="account-address">Address Line</label>
+                        <input class="form-control" type="text" id="account-address" value="{{address}}" name="address" required>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3 pb-1">
-                      <label class="form-label px-0" for="account-username">Username</label>
-                      <div class="input-group"><span class="input-group-text">@</span>
-                        <input class="form-control" type="text" id="account-username" value="amanda_w">
+                    <div class="col-sm-6">
+                      <div class="mb-3 pb-1">
+                        <label class="form-label px-0" for="account-zip">ZIP Code</label>
+                        <input class="form-control" type="text" id="account-zip" value="{{zipcode}}" name="zipcode" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <hr class="mt-2 mb-4">
+                      <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="form-check d-block">
+                          <input class="form-check-input" type="checkbox" id="show-email" checked>
+                          <label class="form-check-label" for="show-email">Show my email to registered users</label>
+                        </div>
+                        <button class="btn btn-primary mt-3 mt-sm-0" type="submit" id="updatebutton"><i class="ai-save fs-lg me-2"></i>Save changes</button>
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3 pb-1">
-                      <label class="form-label px-0" for="account-country">Country</label>
-                      <select class="form-select" id="account-country">
-                        <option value>Select country</option>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Belgium">Belgium</option>
-                        <option value="France">France</option>
-                        <option value="Germany">Germany</option>
-                        <option value="Madagascar">Madagascar</option>
-                        <option value="Spain">Spain</option>
-                        <option value="UK">United Kingdom</option>
-                        <option value="USA" selected>USA</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3 pb-1">
-                      <label class="form-label px-0" for="account-city">City</label>
-                      <input class="form-control" type="text" id="account-city" value="New York">
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3 pb-1">
-                      <label class="form-label px-0" for="account-address">Address Line</label>
-                      <input class="form-control" type="text" id="account-address" value="Some Cool Street, 22/1">
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3 pb-1">
-                      <label class="form-label px-0" for="account-zip">ZIP Code</label>
-                      <input class="form-control" type="text" id="account-zip">
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <hr class="mt-2 mb-4">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center">
-                      <div class="form-check d-block">
-                        <input class="form-check-input" type="checkbox" id="show-email" checked>
-                        <label class="form-check-label" for="show-email">Show my email to registered users</label>
-                      </div>
-                      <button class="btn btn-primary mt-3 mt-sm-0" type="button"><i class="ai-save fs-lg me-2"></i>Save changes</button>
-                    </div>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -270,14 +268,36 @@
       </div>
     </main>
     <!-- Footer-->
-    <footer class="footer py-4">
-      <div class="container d-md-flex align-items-center justify-content-between py-2 text-center text-md-end">
-        <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
-          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Support</a></li>
-          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Contacts</a></li>
-          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Terms &amp; Conditions</a></li>
-        </ul>
-        <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">© All rights reserved. Made by</span><a class="nav-link-style fw-normal" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
+    <footer class="footer bg-dark pt-5 pt-md-6">
+      <div class="container pt-3 pt-md-0">
+        <div class="row pb-3">
+          <div class="col-md-4 mt-n2 pb-3 pb-md-0 mb-4"><a class="d-block mb-3" href="index-2.html" style="width: 153px;text-decoration: none;font-size: xx-large">StepSassAutomation</a>
+            <p class="fs-sm text-light opacity-60 pb-2 pb-sm-3">Highly customizable and modular official multipurpose Bootstrap template and UI kit.</p><a class="btn-social bs-outline bs-facebook bs-light bs-lg me-2 mb-2" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-outline bs-twitter bs-light bs-lg me-2 mb-2" href="#"><i class="ai-twitter"></i></a><a class="btn-social bs-outline bs-instagram bs-light bs-lg me-2 mb-2" href="#"><i class="ai-instagram"></i></a><a class="btn-social bs-outline bs-google bs-light bs-lg me-2 mb-2" href="#"><i class="ai-google"></i></a>
+          </div>
+          <div class="col-md-2 col-sm-4 ms-auto pb-1 mb-4">
+            <div class="widget widget-light">
+              <h4 class="widget-title">Company</h4>
+              <ul>
+                <li><a class="widget-link" href="#">About</a></li>
+                <li><a class="widget-link" href="#">Careers</a></li>
+                <li><a class="widget-link" href="#">Press</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="my-0 border-light">
+        <div class="row align-items-center mt-3 py-4">
+          <div class="col-md-6 order-md-2 text-md-end mb-3">
+            <ul class="list-inline fs-sm mb-0">
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Support</a></li>
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Contacts</a></li>
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 order-md-1 mb-3">
+            <p class="fs-sm mb-0"><span class="text-light opacity-50 me-1">© All rights reserved. Made by</span><a class="nav-link-style nav-link-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
+          </div>
+        </div>
       </div>
     </footer>
     <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
@@ -288,7 +308,6 @@
     <!-- Main theme script-->
     <script src="{% static 'js/theme.min.js' %}"></script>
   </body>
-  {% endif %}
 
 <!-- Mirrored from around.createx.studio/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:19:41 GMT -->
 </html>
