@@ -1,0 +1,24 @@
+{% extends 'base_page.html' %}
+{% load crispy_forms_filters %}
+{% load i18n %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex flex-column h-100 bg-light rounded-3 shadow-lg p-4">
+              <div class="py-2 p-md-3">
+                <!-- Title + Delete link-->
+                <div class="d-sm-flex align-items-center justify-content-between pb-4 text-center text-sm-start">
+                  <h1 class="h3 mb-2 text-nowrap">Create Steps</h1><a class="btn btn-link text-danger fw-medium btn-sm mb-2" href="/deleteaccount"><i class="ai-trash-2 fs-base me-2"></i>Delete account                        </a>
+                </div>
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                   {{form | crispy}}
+                    <br/>
+                    <button type="submit" class="btn btn-success">{% trans 'Create Step' %}</button>
+                </form>
+              </div>
+            </div>
+        </div>
+        <!-- end col-12 -->
+    </div> <!-- end row -->
+{% endblock %}

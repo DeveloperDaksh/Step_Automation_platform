@@ -10,7 +10,7 @@ from stepautomationapp.models import UserData
 from .models import FormsData, UserForms, ResponsesData
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/')
 def userforms(request):
     all_forms = []
     userdetails = User.objects.get(username=request.user)
@@ -46,7 +46,7 @@ def userforms(request):
         )
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/')
 def handleForm(request):
     formName = request.POST.get('formdata')
     form = FormsData.objects.get(formName=formName)
@@ -54,7 +54,7 @@ def handleForm(request):
                         content_type='application/json')
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/')
 def processForm(request):
     form_data = str(request.POST.get('form_data'))
     form_name = request.POST.get('form_name')
@@ -132,7 +132,7 @@ def publishForm(request, form_id):
         )
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/')
 def get_all_forms(request):
     userdetails = User.objects.get(username=request.user)
     forms = UserForms.objects.filter(form_user=str(request.user))
@@ -165,7 +165,7 @@ def get_all_forms(request):
         )
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/')
 def get_form_responses(request, id):
     responses = []
     userdetails = User.objects.get(username=request.user)

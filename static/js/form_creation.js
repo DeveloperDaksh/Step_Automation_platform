@@ -36,7 +36,7 @@ $(function (){
                '<div class="mb-3 pb-1">'+
                '<label for="'+selectedFiled+counter.toString()+'" class="form-label px-0">'+filedlabel+'</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+
                '<input type='+selectedFiled+' class="form-control" name='+selectedFiled+counter.toString()+' id='+selectedFiled+counter.toString()+' required/>&nbsp;&nbsp;&nbsp;'+
-               '<button type="button" value="Remove" class="remove" style="width: auto;float: right;background-color: crimson;border: none;cursor: pointer"><i class="ai-trash-2 fs-base me-2"></button>'+
+               '<button type="button" value="Remove" class="remove" style="width: auto;float: right;border: none;cursor: pointer"><i class="fas fa-trash"></i></button>'+
                '</div>'
            )
            console.log(counter)
@@ -49,7 +49,7 @@ $(function (){
                    '<div class="mb-3 pb-1">'+
                    '<label for="'+selectedFiled+counter.toString()+'" class="form-label px-0">'+filedlabel+'</label>'+
                    '<input type='+selectedFiled+' class="form-control" name='+selectedFiled+counter.toString()+' id='+selectedFiled+counter.toString()+' required/>&nbsp;&nbsp;&nbsp;'+
-                   '<button type="button" value="Remove" class="remove" style="width: auto;float: right;background-color: crimson;border: none;cursor: pointer"><i class="ai-trash-2 fs-base me-2"></button>'+
+                   '<button type="button" value="Remove" class="remove" style="width: auto;float: right;border: none;cursor: pointer"><i class="fas fa-trash"></i></button>'+
                    '</div>'
                )
            }
@@ -58,7 +58,7 @@ $(function (){
                    '<div class="mb-3 pb-1">'+
                    '<label for="'+selectedFiled+counter.toString()+'" class="form-label px-0">'+filedlabel+'</label>'+
                    '<input type='+selectedFiled+' class="form-control" name='+selectedFiled+counter.toString()+' id='+selectedFiled+counter.toString()+'/>&nbsp;&nbsp;&nbsp;'+
-                   '<button type="button" value="Remove" class="remove" style="width: auto;float: right;background-color: crimson;border: none;cursor: pointer"><i class="ai-trash-2 fs-base me-2"></button>'+
+                   '<button type="button" value="Remove" class="remove" style="width: auto;float: right;border: none;cursor: pointer"><i class="fas fa-trash"></i></button>'+
                    '</div>'
                )
            }

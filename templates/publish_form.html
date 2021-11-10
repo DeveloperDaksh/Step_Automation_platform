@@ -1,218 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from around.createx.studio/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:19:41 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     {% load static %}
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>StepSaasAutomation</title>
-    <!-- SEO Meta Tags-->
-    <meta name="description" content="Around - Multipurpose Bootstrap Template">
-    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
-    <meta name="author" content="Createx Studio">
-    <!-- Viewport-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-     <!-- Favicon and Touch Icons-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" id="light-style" />
     <link rel="manifest" href="{% static 'site.webmanifest' %}">
     <link rel="mask-icon" color="#5bbad5" href="{% static 'safari-pinned-tab.svg' %}">
-    <meta name="msapplication-TileColor" content="#766df4">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" media="screen" href="{% static 'css/spinnerstyle.css' %}">
-    <!-- Page loading styles-->
-    <style>
-      .page-loading {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        -webkit-transition: all .4s .2s ease-in-out;
-        transition: all .4s .2s ease-in-out;
-        background-color: #fff;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 9999;
-      }
-      .page-loading.active {
-        opacity: 1;
-        visibility: visible;
-      }
-      .page-loading-inner {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        -webkit-transition: opacity .2s ease-in-out;
-        transition: opacity .2s ease-in-out;
-        opacity: 0;
-      }
-      .page-loading.active > .page-loading-inner {
-        opacity: 1;
-      }
-      .page-loading-inner > span {
-        display: block;
-        font-family: 'Inter', sans-serif;
-        font-size: 1rem;
-        font-weight: normal;
-        color: #737491;
-      }
-      .page-spinner {
-        display: inline-block;
-        width: 2.75rem;
-        height: 2.75rem;
-        margin-bottom: .75rem;
-        vertical-align: text-bottom;
-        border: .15em solid #766df4;
-        border-right-color: transparent;
-        border-radius: 50%;
-        -webkit-animation: spinner .75s linear infinite;
-        animation: spinner .75s linear infinite;
-      }
-      @-webkit-keyframes spinner {
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes spinner {
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    </style>
-    <!-- Page loading scripts-->
-    <script>
-      (function () {
-        window.onload = function () {
-          var preloader = document.querySelector('.page-loading');
-          preloader.classList.remove('active');
-          setTimeout(function () {
-            preloader.remove();
-          }, 2000);
-        };
-      })();
+</head>
 
-    </script>
-    <!-- Vendor Styles-->
-    <link rel="stylesheet" media="screen" href="{% static 'vendor/simplebar/dist/simplebar.min.css' %}"/>
-    <link rel="stylesheet" media="screen" href="{% static 'vendor/tiny-slider/dist/tiny-slider.css' %}"/>
-    <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="{% static 'css/theme.min.css' %}">
-    <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
-  </head>
-  <!-- Body-->
-  <body style="background-color:#f7f7fc;">
-    <!-- Google Tag Manager (noscript)-->
-    <noscript>
-      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
-    </noscript>
-    <!-- Page loading spinner-->
-    <div class="page-loading active">
-      <div class="page-loading-inner">
-        <div class="page-spinner"></div><span>Loading...</span>
-      </div>
+<body class="loading"
+    data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <!-- Begin page -->
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="content">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex flex-column h-100 bg-light rounded-3 shadow-lg p-4">
+                              <div class="py-2 p-md-3" >
+                                <!-- Title + Delete link-->
+                                <!-- Content-->
+                                  <div class="mb-3 pb-1">
+                                        <label class="form-label px-0">Form Name : </label>
+                                      <p><span style="font-size: 16px">{{form_name}}</span></p>
+                                    </div>
+                                    <div class="mb-3 pb-1">
+                                        <label class="form-label px-0">Form Description</label>
+                                        <p><span style="font-size: 16px">{{form_description}}</span></p>
+                                    </div>
+                                    <form method="post" enctype="multipart/form-data">
+                                          <div class="rounded-3 p-4 mb-4">
+                                              {% csrf_token %}
+                                              {{form | safe}}
+                                          </div>
+                                          <br/>
+                                          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <!-- end col-12 -->
+                    </div> <!-- end row -->
+
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-end footer-links d-none d-md-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- end Footer -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
     </div>
-    <main class="page-wrapper">
-      <!-- Navbar (Floating light)-->
-      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-      <!-- Page content-->
-      <!-- Slanted background-->
-      <div class="position-relative bg-gradient" style="height: 480px;">
-        <div class="shape shape-bottom shape-slant bg-secondary d-none d-lg-block">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 260">
-            <polygon fill="currentColor" points="0,257 0,260 3000,260 3000,0"></polygon>
-          </svg>
-        </div>
-      </div>
-      <!-- Page content-->
-      <div class="container position-relative zindex-5 pb-4 mb-md-3" style="margin-top: -350px;">
-        <div class="row" style="padding-left: 300px;width: auto">
-          <!-- Sidebar-->
-          <!-- Content-->
-          <div class="col-lg-8">
-            <div class="d-flex flex-column h-100 bg-light rounded-3 shadow-lg p-4">
-              <div class="py-2 p-md-3" >
-                <!-- Title + Delete link-->
-                <!-- Content-->
-                  <div class="mb-3 pb-1">
-                        <label class="form-label px-0">Form Name : </label>
-                      <p><span style="font-size: 16px">{{form_name}}</span></p>
-                    </div>
-                    <div class="mb-3 pb-1">
-                        <label class="form-label px-0">Form Description</label>
-                        <p><span style="font-size: 16px">{{form_description}}</span></p>
-                    </div>
-                    <form method="post" enctype="multipart/form-data">
-                          <div class="bg-secondary rounded-3 p-4 mb-4">
-                              {% csrf_token %}
-                              {{form | safe}}
-                          </div>
-                          <br/>
-                          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                    </form>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-    </main>
-    <!-- Footer-->
-    <footer class="footer bg-dark pt-5 pt-md-6">
-      <div class="container pt-3 pt-md-0">
-        <div class="row pb-3">
-          <div class="col-md-4 mt-n2 pb-3 pb-md-0 mb-4"><a class="d-block mb-3" href="index-2.html" style="width: 153px;text-decoration: none;font-size: xx-large">StepSassAutomation</a>
-            <p class="fs-sm text-light opacity-60 pb-2 pb-sm-3">Highly customizable and modular official multipurpose Bootstrap template and UI kit.</p><a class="btn-social bs-outline bs-facebook bs-light bs-lg me-2 mb-2" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-outline bs-twitter bs-light bs-lg me-2 mb-2" href="#"><i class="ai-twitter"></i></a><a class="btn-social bs-outline bs-instagram bs-light bs-lg me-2 mb-2" href="#"><i class="ai-instagram"></i></a><a class="btn-social bs-outline bs-google bs-light bs-lg me-2 mb-2" href="#"><i class="ai-google"></i></a>
-          </div>
-          <div class="col-md-2 col-sm-4 ms-auto pb-1 mb-4">
-            <div class="widget widget-light">
-              <h4 class="widget-title">Company</h4>
-              <ul>
-                <li><a class="widget-link" href="#">About</a></li>
-                <li><a class="widget-link" href="#">Careers</a></li>
-                <li><a class="widget-link" href="#">Press</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <hr class="my-0 border-light">
-        <div class="row align-items-center mt-3 py-4">
-          <div class="col-md-6 order-md-2 text-md-end mb-3">
-            <ul class="list-inline fs-sm mb-0">
-              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Support</a></li>
-              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Contacts</a></li>
-              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Terms &amp; Conditions</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 order-md-1 mb-3">
-            <p class="fs-sm mb-0"><span class="text-light opacity-50 me-1">© All rights reserved. Made by</span><a class="nav-link-style nav-link-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
-    <!-- Vendor scrits: js libraries and plugins-->
-    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'vendor/simplebar/dist/simplebar.min.js' %}"></script>
-    <script src="{% static 'vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js' %}"></script>
-    <!-- Main theme script-->
-    <script src="{% static 'js/theme.min.js' %}"></script>
-  </body>
 
-<!-- Mirrored from around.createx.studio/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:19:41 GMT -->
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+
+    <!-- bundle -->
+    <script src="{% static 'assets/js/vendor.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.min.js' %}"></script>
+    </div>
+</body>
 </html>

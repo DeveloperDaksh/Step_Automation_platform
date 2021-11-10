@@ -9,6 +9,8 @@ SECRET_KEY = config('SECRET_KEY', default=string.ascii_letters)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
 
 DEBUG = config('DEBUG', default=True, cast=bool)
+SENDGRID_EMAIL_API = config('SENDGRID_EMAIL_API')
+FROM_EMAIL = config('FROM_EMAIL')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -21,6 +23,7 @@ INSTALLED_APPS = [
     'userforms.apps.UserformsConfig',
     'rest_framework',
     'rest_framework.authtoken',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -33,6 +36,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ROOT_URLCONF = 'StepAutomation.urls'
 
@@ -107,9 +112,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'stepautomationapp/static'),
-)
 
 MEDIA_URL = '/media/'
 

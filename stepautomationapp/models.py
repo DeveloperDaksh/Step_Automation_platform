@@ -36,3 +36,21 @@ class City(models.Model):
 
     def __str__(self):
         return self.city
+
+
+class Steps(models.Model):
+    user = models.CharField(max_length=225)
+    step_name = models.CharField(max_length=225)
+    step_count = models.IntegerField()
+    step_description = models.TextField()
+    step_visibility = models.CharField(max_length=20)
+    step_download = models.CharField(max_length=20)
+    step_document = models.FileField(upload_to='stepfiles')
+
+
+class Documents(models.Model):
+    user = models.CharField(max_length=225)
+    description = models.TextField()
+    step_document = models.FileField(upload_to='documents')
+    notarize = models.CharField(max_length=10)
+    apostille = models.CharField(max_length=10)

@@ -16,7 +16,18 @@ urlpatterns = [
     path('deleteaccount', views.delete_account, name='deleteaccount'),
     path('updateprofilepic', views.updateProfilePic, name='updateProfile'),
     path('steps', views.handleStepFiles, name='steps'),
-    path('project/<projectName>', views.get_project_details)
+    path('project/<projectName>', views.get_project_details),
+    path('forget-password', views.forgetPassword, name='forgetpassword'),
+    path('update-password/<token>', views.update_password, name='update_password'),
+    path('createsteps', views.create_steps, name='create_steps'),
+    path('displaysteps', views.display_steps, name='display_steps'),
+    path('dashboard', views.dashboard_details, name='dashboard_details'),
+    path('templates', views.template_details, name='templates'),
+    path('documents', views.documents_details, name='documents'),
+    path('clients', views.clients_details, name='clients'),
+    path('cases', views.cases_details, name='cases'),
+    path('createdocument', views.create_document, name='create_document')
+
 ]
 
 if settings.DEBUG:

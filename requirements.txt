@@ -7,3 +7,5 @@ python-decouple==3.4
 django-utils-six==2.0
 djangorestframework==3.12.4
 pillow==8.0.1
+sendgrid==6.8.1
+django-crispy-forms==1.12.0

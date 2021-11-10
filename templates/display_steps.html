@@ -1,0 +1,38 @@
+{% extends 'base_page.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex flex-column h-100 rounded-3 shadow-lg">
+                Display Steps
+                <br/><br/>
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap" id="items-display-table">
+                  <thead>
+                    <tr>
+                        <th>Step Name</th>
+                        <th>Step Count</th>
+                        <th>Description</th>
+                      <th> File Name</th>
+                        <th>Visible</th>
+                      <th> Download </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for each in steps %}
+                        <tr>
+                            <td>{{each.step_name}}</td>
+                            <td>{{each.step_count}}</td>
+                            <td>{{each.step_description}}</td>
+                            <td>{{each.step_document}}</td>
+                            <td>{{each.step_visibility}}</td>
+                            <td>{{each.step_download}}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        <!-- end col-12 -->
+    </div> <!-- end row -->
+{% endblock %}
