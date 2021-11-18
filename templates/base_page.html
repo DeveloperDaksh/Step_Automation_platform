@@ -20,6 +20,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% block script %}
     {% endblock %}
+    {% block style %}
+    {% endblock %}
 </head>
 
 <body class="loading"
@@ -27,7 +29,7 @@
     {% block body %}
     <!-- Begin page -->
     <div class="navbar" style="max-width: 100%;max-height: 72px;padding: 0;left: 0">
-        <ul style="display: inline;list-style: none;max-width: 100%">
+        <ul style="display: inline-block;list-style: none;max-width: 100%;max-height: 50%" class="container-fluid">
             <li class="nav-item active" style="display: inline-flex;padding: 25px">
                 <a href="/dashboard" class="side-nav-link">
                     <span class="logo-lg">
@@ -97,14 +99,14 @@
                     </div>
                 </div>
             </li>
-            <li class="dropdown notification-list nav-item active" style="display: inline-flex;float: right;padding-left: 700px">
-                <a class="nav-link dropdown-toggle nav-user arrow-none me-0 " style="border: none;" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+            <li class="dropdown notification-list nav-item active" style="display: inline-block;float: right;margin: 0;">
+                <a class="nav-link dropdown-toggle nav-user arrow-none me-0 " style="border: none;text-decoration: none;" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                     aria-expanded="false">
                     <span class="account-user-avatar">
                         <img src={{profilepic}} alt="Avatar" class="rounded-circle">
                     </span>
                     <span>
-                        <span class="account-user-name">{{username}}</span>
+                        <span class="account-user-name" style="color: #6c757d;font-weight: 400">{{username}}</span>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -134,47 +136,47 @@
             </li>
         </ul>
     </div>
-    <div class="navbar navbar-dark bg-dark" style="max-width: 100%;max-height: 72px;padding: 0;left: 0">
-        <ul style="display: inline;list-style: none;max-width: 100%">
-            <li class="nav-item active" style="display: inline-flex;padding: 20px">
+    <div class="navbar navbar-dark bg-dark" style="max-width: 100%;max-height: available;height: .72%;padding: 0;left: 0">
+        <ul style="display: inline-block;list-style: none;max-width: 100%;padding-left: 5%">
+            <li class="nav-item active px-3" style="display: inline-block">
                 <a href="/dashboard" class="side-nav-link" style="text-decoration: none">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <span> Dashboard </span>
                 </a>
             </li>
-            <li class="nav-item dropdown" style="display: inline-flex;padding: 20px">
+            <li class="nav-item dropdown px-3" style="display: inline-block;">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Resources</a>
                 <div class="dropdown-menu">
                     <a href="/documents" class="dropdown-item">Documents</a>
                     <a href="/templates" class="dropdown-item">Templates</a>
                 </div>
             </li>
-            <li class="nav-item dropdown" style="display: inline-flex;padding: 20px">
+            <li class="nav-item dropdown px-3" style="display: inline-block;">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Cases</a>
                 <div class="dropdown-menu">
                     <a href="/clients" class="dropdown-item">Clients</a>
                     <a href="/cases" class="dropdown-item">Cases</a>
                 </div>
             </li>
-            <li class="nav-item active" style="display: inline-flex;padding: 20px">
+            <li class="nav-item active px-3" style="display: inline-block">
                 <a href="/account-profile" class="side-nav-link" style="text-decoration: none">
                     <i class="fa fa-user" aria-hidden="true" color="white"></i>
                     <span> ProfileInformation </span>
                 </a>
             </li>
-            <li class="nav-item active" style="display: inline-flex;padding: 20px">
+            <li class="nav-item active px-3" style="display: inline-block;">
                 <a href="/steps" class="side-nav-link" style="text-decoration: none">
                     <i class="uil-comments-alt"></i>
                     <span> Steps </span>
                 </a>
             </li>
-            <li class="nav-item active" style="display: inline-flex;padding: 25px">
+            <li class="nav-item active px-3" style="display: inline-block;">
                 <a href="/forms" class="side-nav-link" style="text-decoration: none">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     <span> Create Forms </span>
                 </a>
             </li>
-            <li class="nav-item active" style="display: inline-flex;padding: 20px">
+            <li class="nav-item active px-3" style="display: inline-block">
                 <a href="/forms/getforms" class="side-nav-link" style="text-decoration: none">
                     <i class="fa fa-wpforms" aria-hidden="true"></i>
                     <span> Forms </span>

@@ -14,13 +14,15 @@ from django.conf import settings
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Email, To
 
-from .models import UserData, UserFiles, Steps,Documents
+from .models import UserData, UserFiles, Steps, Documents
 from .models import Country
 from userforms.models import UserForms
 from .forms import Stepsform, DocumentsForm
 
 
+# landing page
 def index(request):
+    # if user is authenticated it will redirect to dashboard
     if request.user.is_authenticated:
         return redirect('/steps')
     else:
@@ -39,6 +41,7 @@ def index(request):
     )'''
 
 
+# delete the user account
 @login_required(login_url='/')
 def delete_account(request):
     user = User.objects.get(username=request.user)
@@ -49,6 +52,7 @@ def delete_account(request):
     return redirect('/')
 
 
+# check the user is authenticated or not
 def signin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -69,15 +73,18 @@ def signin(request):
                                 content_type='application/json')
 
 
+# creating new user
 def signup(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
         try:
+            # if email already exists it will display error message
             usersemail = User.objects.get(email=email)
             return HttpResponse(json.dumps({'status_msg': 'NotOk', 'msg': 'User or Email Already Exists'}),
                                 content_type='application/json')
         except User.DoesNotExist:
+            # if emails doesn't exists it will create the user and redirect to users dashboard
             user = User.objects.create_user(
                 username=email,
                 password=password,
@@ -96,6 +103,7 @@ def dashboard(request):
     userdetails = User.objects.get(username=request.user)
     countries = Country.objects.all()
     try:
+        # if user updated his profile picture or data
         userdata = UserData.objects.get(userrelation=userdetails)
         print(userdata.profilepic)
         print(userdata.country)
@@ -136,6 +144,8 @@ def dashboard(request):
         )
 
 
+# to create the dependent dropdown for the city and states
+# this will return cities dependent on their countries
 @permission_classes([permissions.AllowAny])
 def getCities(request):
     sname = request.GET['countrydata']
@@ -148,6 +158,7 @@ def getCities(request):
     return HttpResponse(json.dumps(results), content_type='application/json')
 
 
+# for updating the user profile
 @login_required(login_url='/')
 def updateProfile(request):
     user = User.objects.get(username=request.user)
@@ -170,6 +181,7 @@ def updateProfile(request):
     return redirect('/account-profile')
 
 
+# for updating the profile picture of the user
 @login_required(login_url='/')
 def updateProfilePic(request):
     user = User.objects.get(username=request.user)
@@ -192,6 +204,7 @@ def updateProfilePic(request):
         return redirect('/account-profile')
 
 
+# to create steps of the user
 @login_required(login_url='/')
 def handleStepFiles(request):
     user = User.objects.get(username=request.user)
@@ -212,6 +225,7 @@ def handleStepFiles(request):
     if request.method == 'POST':
         projectName = request.POST.get('projectName')
         try:
+            # check if the project name already exist in that user account
             project = UserFiles.objects.get(user=user, projectName=projectName)
             return render(
                 request,
@@ -227,6 +241,7 @@ def handleStepFiles(request):
                 }
             )
         except UserFiles.DoesNotExist:
+            # if project name doesn't exists it will create steps for the user
             customerName = request.POST.get('customerName')
             projectDescription = request.POST.get('projectDescription')
             userfile = UserFiles.objects.create(
@@ -265,6 +280,7 @@ def handleStepFiles(request):
         )
 
 
+# to get the details of the project based on their project name
 @login_required(login_url='/')
 def get_project_details(request, projectName):
     userdetails = User.objects.get(username=request.user)
@@ -298,10 +314,12 @@ def get_project_details(request, projectName):
         )
 
 
+# to send the forget password link to the user registered email
 def forgetPassword(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         try:
+            # check the user entered email is in records
             user = User.objects.get(email=email)
             try:
                 authToken = Token.objects.get(user_id=user.id)
@@ -313,6 +331,7 @@ def forgetPassword(request):
                     }
                 )
             except Token.DoesNotExist:
+                # it will generate a token to identify the user
                 token_generation = Token.objects.create(user_id=user.id)
                 token_generation.save()
                 authToken = Token.objects.get(user_id=user.id)
@@ -361,6 +380,7 @@ def forgetPassword(request):
         )
 
 
+# to update the password from the forget password link
 def update_password(request, token):
     try:
         user_token = Token.objects.get(key=token)
@@ -518,6 +538,7 @@ def template_details(request):
     )
 
 
+# to display the documents of current user
 @login_required(login_url='/')
 def documents_details(request):
     user = User.objects.get(username=request.user)
@@ -580,6 +601,7 @@ def cases_details(request):
     )
 
 
+# user to add the documents
 @login_required(login_url='/')
 def create_document(request):
     user = User.objects.get(username=request.user)
@@ -608,7 +630,7 @@ def create_document(request):
                 }
             )
     else:
-        form = DocumentsForm()
+        form = DocumentsForm(initial={'apostille': 'No', 'notarize': 'No'})
         return render(
             request,
             'create_documents.html',

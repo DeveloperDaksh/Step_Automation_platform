@@ -50,7 +50,7 @@ class Steps(models.Model):
 
 class Documents(models.Model):
     user = models.CharField(max_length=225)
-    description = models.TextField()
+    description = models.CharField(max_length=225)
     step_document = models.FileField(upload_to='documents')
     notarize = models.CharField(max_length=10)
     apostille = models.CharField(max_length=10)

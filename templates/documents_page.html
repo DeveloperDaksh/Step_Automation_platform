@@ -1,11 +1,43 @@
 {% extends 'base_page.html' %}
+{% block style %}
+    <style>
+        ul.breadcrumb {
+          padding: 10px 16px;
+          list-style: none;
+        }
+        ul.breadcrumb li {
+          display: inline;
+          font-size: 18px;
+        }
+        ul.breadcrumb li+li:before {
+          padding: 8px;
+          color: black;
+          content: "/\00a0";
+        }
+        ul.breadcrumb li a {
+          color: #0275d8;
+          text-decoration: none;
+        }
+        ul.breadcrumb li a:hover {
+          color: #01447e;
+          text-decoration: underline;
+        }
+    </style>
+{% endblock %}
 {% block content %}
+    <h2>Documents</h2>
+    <a class="btn btn-sm btn-primary pull-right" href="/createdocument">Add Document</a>
+    <ul class="breadcrumb" style="display: inline-block">
+      <li><a href="/dashboard">Home</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="/documents">Documents List</a></li>
+      <li>Documents</li>
+    </ul>
     <div class="row">
         <div class="col-12">
             <div class="d-flex flex-column h-100 rounded-3 shadow-lg p-4">
               <div class="py-2 p-md-3">
-                  <h1>Documents</h1>
-                  <a class="btn btn-sm btn-primary pull-right" href="/createdocument">Add Document</a>
+                  <h1 style="font-size: 16px">Documents List</h1>
                   <div class="card-body table-responsive p-0" style="height: 300px;">
                     <table class="table table-head-fixed text-nowrap" id="items-display-table">
                       <thead>

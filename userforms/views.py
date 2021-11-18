@@ -54,6 +54,7 @@ def handleForm(request):
                         content_type='application/json')
 
 
+# to create a form
 @login_required(login_url='/')
 def processForm(request):
     form_data = str(request.POST.get('form_data'))
@@ -66,9 +67,11 @@ def processForm(request):
     else:
         has_file = False
     try:
+        # if the form name exists it will display error message
         user = UserForms.objects.get(form_user=str(request.user), form_name=form_name)
         return HttpResponse(json.dumps({'status_msg': 'NotOk'}), content_type='application/json')
     except UserForms.DoesNotExist:
+        # if the form name doesn't exists it will create a form with the given name
         userform = UserForms.objects.create(
             form_user=str(request.user),
             form_name=form_name,
@@ -84,6 +87,7 @@ def processForm(request):
                             content_type='application/json')
 
 
+# to get the responses form the forms
 def publishForm(request, form_id):
     form = UserForms.objects.get(id=form_id)
     if request.method == 'POST':
@@ -132,6 +136,7 @@ def publishForm(request, form_id):
         )
 
 
+# display all the forms of the current user
 @login_required(login_url='/')
 def get_all_forms(request):
     userdetails = User.objects.get(username=request.user)
@@ -165,6 +170,7 @@ def get_all_forms(request):
         )
 
 
+# to display all responses of the form
 @login_required(login_url='/')
 def get_form_responses(request, id):
     responses = []
