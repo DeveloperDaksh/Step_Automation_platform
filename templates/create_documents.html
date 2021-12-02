@@ -1,44 +1,26 @@
 {% extends 'base_page.html' %}
-{% block style %}
-    <style>
-        ul.breadcrumb {
-          padding: 10px 16px;
-          list-style: none;
-        }
-        ul.breadcrumb li {
-          display: inline;
-          font-size: 18px;
-        }
-        ul.breadcrumb li+li:before {
-          padding: 8px;
-          color: black;
-          content: "/\00a0";
-        }
-        ul.breadcrumb li a {
-          color: #0275d8;
-          text-decoration: none;
-        }
-        ul.breadcrumb li a:hover {
-          color: #01447e;
-          text-decoration: underline;
-        }
-    </style>
-{% endblock %}
 {% load crispy_forms_filters %}
 {% load i18n %}
 {% block content %}
-    <h2> Add Document</h2>
-    <ul class="breadcrumb" style="display: inline-block">
-      <li><a href="/dashboard">Home</a></li>
-      <li><a href="#">Resources</a></li>
-      <li><a href="/documents">Documents List</a></li>
-      <li>Add Document</li>
-    </ul>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                          <li class="breadcrumb-item"><a href="#">Standard</a></li>
+                          <li class="breadcrumb-item"><a href="/documents">Files</a></li>
+                          <li class="breadcrumb-item">Add File</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Add File</h4>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="d-flex flex-column h-100 rounded-3 shadow-lg p-4">
               <div class="py-2 p-md-3">
-                  <h3>Add Document</h3>
                   <form method="post" enctype="multipart/form-data">
                       {% csrf_token %}
                       {{ form | crispy }}

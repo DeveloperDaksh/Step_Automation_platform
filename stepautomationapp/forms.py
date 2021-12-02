@@ -1,4 +1,4 @@
-from .models import Steps, Documents
+from .models import Steps, Documents, Customers
 from django import forms
 
 
@@ -33,5 +33,12 @@ class DocumentsForm(forms.ModelForm):
 
     class Meta:
         model = Documents
+        exclude = ('user',)
+        fields = '__all__'
+
+
+class CustomersForm(forms.ModelForm):
+    class Meta:
+        model = Customers
         exclude = ('user',)
         fields = '__all__'

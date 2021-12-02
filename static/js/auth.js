@@ -41,7 +41,7 @@ $(document).ready(function (){
                     document.getElementById("cpassword").value="";
                     document.getElementById("register-message").innerText=result.msg;
                     document.getElementById("register-message").style.color="#2fc457";
-                    window.location.href=window.location.origin+"/steps"
+                    window.location.href=window.location.origin+"/dashboard"
                 }
                 else {
                     document.getElementById("password").value="";
@@ -80,7 +80,7 @@ $(document).ready(function (){
             $('#loader1').addClass('hidden')
             if(result.status_msg==='Ok'){
                 document.getElementById("passwordl").value="";
-                window.location.href=window.location.origin+"/steps";
+                window.location.href=window.location.origin+"/dashboard";
             }
             else {
                 document.getElementById("passwordl").value="";

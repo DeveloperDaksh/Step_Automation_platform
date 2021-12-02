@@ -1,0 +1,33 @@
+{% extends 'base_page.html' %}
+{% load crispy_forms_filters %}
+{% load i18n %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                          <li class="breadcrumb-item"><a href="/customers">Customers</a></li>
+                          <li class="breadcrumb-item">Edit Customer</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Edit Customer</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex flex-column h-100 rounded-3 shadow-lg p-4">
+              <div class="py-2 p-md-3">
+                  <form method="post">
+                      {% csrf_token %}
+                      {{ form | crispy }}
+                      <br/>
+                      <button type="submit" class="btn btn-success">{% trans 'Update' %}</button>
+                  </form>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

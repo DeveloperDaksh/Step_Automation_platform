@@ -14,17 +14,17 @@ from django.conf import settings
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Email, To
 
-from .models import UserData, UserFiles, Steps, Documents
+from .models import UserData, UserFiles, Steps, Documents, Customers
 from .models import Country
 from userforms.models import UserForms
-from .forms import Stepsform, DocumentsForm
+from .forms import Stepsform, DocumentsForm, CustomersForm
 
 
 # landing page
 def index(request):
     # if user is authenticated it will redirect to dashboard
     if request.user.is_authenticated:
-        return redirect('/steps')
+        return redirect('/dashboard')
     else:
         return render(
             request,
@@ -601,6 +601,93 @@ def cases_details(request):
     )
 
 
+@login_required(login_url='/')
+def project_details(request):
+    user = User.objects.get(username=request.user)
+    try:
+        userdata = UserData.objects.get(userrelation=user)
+        username = user.username
+        profilepic = 'https://stepsaasautomation.herokuapp.com/media/' + str(userdata.profilepic)
+    except UserData.DoesNotExist:
+        profilepic = 'https://stepsaasautomation.herokuapp.com/media/media/profilepic.png'
+        username = request.user
+    return render(
+        request,
+        'projects.html',
+        {
+            'username': username,
+            'profilepic': profilepic,
+        }
+    )
+
+
+@login_required(login_url='/')
+def customers_details(request):
+    user = User.objects.get(username=request.user)
+    try:
+        userdata = UserData.objects.get(userrelation=user)
+        username = user.username
+        profilepic = 'https://stepsaasautomation.herokuapp.com/media/' + str(userdata.profilepic)
+    except UserData.DoesNotExist:
+        profilepic = 'https://stepsaasautomation.herokuapp.com/media/media/profilepic.png'
+        username = request.user
+    customers = Customers.objects.filter(user=request.user.username)
+    return render(
+        request,
+        'customers.html',
+        {
+            'username': username,
+            'profilepic': profilepic,
+            'customers': customers
+        }
+    )
+
+
+@login_required(login_url='/')
+def edit_customer(request, customer_id):
+    user = User.objects.get(username=request.user)
+    try:
+        userdata = UserData.objects.get(userrelation=user)
+        username = user.username
+        profilepic = 'https://stepsaasautomation.herokuapp.com/media/' + str(userdata.profilepic)
+    except UserData.DoesNotExist:
+        profilepic = 'https://stepsaasautomation.herokuapp.com/media/media/profilepic.png'
+        username = request.user
+    customer = Customers.objects.get(id=customer_id)
+    if request.method == 'POST':
+        form = CustomersForm(instance=customer, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/editcustomer/' + str(customer_id))
+        else:
+            return render(
+                request,
+                'edit_customer.html',
+                {
+                    'username': username,
+                    'profilepic': profilepic,
+                    'form': form
+                }
+            )
+    else:
+        form = CustomersForm(instance=customer)
+        return render(
+            request,
+            'edit_customer.html',
+            {
+                'username': username,
+                'profilepic': profilepic,
+                'form': form
+            }
+        )
+
+
+@login_required(login_url='/')
+def delete_customer(request, customer_id):
+    Customers.objects.get(id=customer_id).delete()
+    return redirect('/customers')
+
+
 # user to add the documents
 @login_required(login_url='/')
 def create_document(request):
@@ -634,6 +721,46 @@ def create_document(request):
         return render(
             request,
             'create_documents.html',
+            {
+                'username': username,
+                'profilepic': profilepic,
+                'form': form
+            }
+        )
+
+
+@login_required(login_url='/')
+def create_customer(request):
+    user = User.objects.get(username=request.user)
+    try:
+        userdata = UserData.objects.get(userrelation=user)
+        username = user.username
+        profilepic = 'https://stepsaasautomation.herokuapp.com/media/' + str(userdata.profilepic)
+    except UserData.DoesNotExist:
+        profilepic = 'https://stepsaasautomation.herokuapp.com/media/media/profilepic.png'
+        username = request.user
+    if request.method == 'POST':
+        form = CustomersForm(request.POST)
+        if form.is_valid():
+            customer = form.save(commit=False)
+            customer.user = request.user.username
+            customer.save()
+            return redirect('/customers')
+        else:
+            return render(
+                request,
+                'create_customer.html',
+                {
+                    'username': username,
+                    'profilepic': profilepic,
+                    'form': form
+                }
+            )
+    else:
+        form = CustomersForm()
+        return render(
+            request,
+            'create_customer.html',
             {
                 'username': username,
                 'profilepic': profilepic,

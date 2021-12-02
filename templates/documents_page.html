@@ -1,67 +1,88 @@
 {% extends 'base_page.html' %}
+{% load static %}
+{% load stringspliceing %}
 {% block style %}
-    <style>
-        ul.breadcrumb {
-          padding: 10px 16px;
-          list-style: none;
-        }
-        ul.breadcrumb li {
-          display: inline;
-          font-size: 18px;
-        }
-        ul.breadcrumb li+li:before {
-          padding: 8px;
-          color: black;
-          content: "/\00a0";
-        }
-        ul.breadcrumb li a {
-          color: #0275d8;
-          text-decoration: none;
-        }
-        ul.breadcrumb li a:hover {
-          color: #01447e;
-          text-decoration: underline;
-        }
-    </style>
+    <!-- third party css -->
+        <link href="{% static 'assets/css/vendor/dataTables.bootstrap5.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/vendor/responsive.bootstrap5.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block content %}
-    <h2>Documents</h2>
-    <a class="btn btn-sm btn-primary pull-right" href="/createdocument">Add Document</a>
-    <ul class="breadcrumb" style="display: inline-block">
-      <li><a href="/dashboard">Home</a></li>
-      <li><a href="#">Resources</a></li>
-      <li><a href="/documents">Documents List</a></li>
-      <li>Documents</li>
-    </ul>
-    <div class="row">
-        <div class="col-12">
-            <div class="d-flex flex-column h-100 rounded-3 shadow-lg p-4">
-              <div class="py-2 p-md-3">
-                  <h1 style="font-size: 16px">Documents List</h1>
-                  <div class="card-body table-responsive p-0" style="height: 300px;">
-                    <table class="table table-head-fixed text-nowrap" id="items-display-table">
-                      <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Files</th>
-                            <th>Notarize</th>
-                          <th> Apostille</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% for each in documents %}
-                            <tr>
-                                <td>{{each.description}}</td>
-                                <td><a href="/media/{{each.step_document}}" target="_blank">{{each.step_document}}</a></td>
-                                <td>{{each.notarize}}</td>
-                                <td>{{each.apostille}}</td>
-                            </tr>
-                        {% endfor %}
-                      </tbody>
-                    </table>
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                              <li class="breadcrumb-item"><a href="#">Standard</a></li>
+                              <li class="breadcrumb-item">Files</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Files</h4>
                 </div>
-              </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <a href="/createdocument" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add File</a>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-centered w-100 dt-responsive nowrap" id="products-datatable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="all" style="width: 20px;">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="customCheck1">
+                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
+                                            </div>
+                                        </th>
+                                        <th>Description</th>
+                                        <th>Files</th>
+                                        <th>Notarize</th>
+                                        <th> Apostille</th>
+                                        <th>Added Date</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for each in documents %}
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="customCheck13">
+                                                    <label class="form-check-label" for="customCheck13">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{each.description}}
+                                            </td>
+                                            <td>
+                                                <a href="/media/{{each.step_document}}" target="_blank">{{each.step_document | splicestring:10}}</a>
+                                            </td>
+                                            <td>
+                                                {{each.notarize}}
+                                            </td>
+
+                                            <td>
+                                                {{each.apostille}}
+                                            </td>
+                                            <td>
+                                                {{each.file_add_date | date}}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
 {% endblock %}
